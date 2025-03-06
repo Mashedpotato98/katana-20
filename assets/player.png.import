@@ -1,0 +1,14 @@
+[remap]
+
+importer="image"
+type="Image"
+uid="uid://b2x0mppv54rye"
+path="res://.godot/imported/player.png-be2216fcaabb5c62aa2466cd9a5726a8.image"
+
+[deps]
+
+source_file="res://assets/player.png"
+dest_files=["res://.godot/imported/player.png-be2216fcaabb5c62aa2466cd9a5726a8.image"]
+
+[params]
+
