@@ -3,6 +3,7 @@ class_name playerWalk
 
 #region movement variables
 @export var player:CharacterBody2D 
+@export var grapple_gun:Node2D
 
 @export var max_speed:float = 300.0
 @export var jump_velocity:float = -400.0
@@ -16,6 +17,9 @@ var time_held_down:float = 0.0
 var hold_threshold:float = 1.0
 var has_transitioned:bool = false
 #endregion
+
+func Enter():
+	grapple_gun.process_mode = Node.PROCESS_MODE_INHERIT
 
 func physics_update(_delta:float):
 	move(_delta)
@@ -39,6 +43,7 @@ func melee(_delta):
 		time_held_down += _delta  
 
 	if time_held_down > hold_threshold and not has_transitioned:
+		grapple_gun.process_mode = Node.PROCESS_MODE_DISABLED
 		Transitioned.emit(self, "playerDash")
 		has_transitioned = true  
 
