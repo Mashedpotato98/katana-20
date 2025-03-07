@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=3 uid="uid://chitpd4svd62l"]
+
+[ext_resource type="Texture2D" uid="uid://cf2rg4c1fvhv1" path="res://icon.svg" id="1_8dhjr"]
+[ext_resource type="Script" path="res://player/player_test.gd" id="1_srs4i"]
+[ext_resource type="Script" path="res://player/grapple_gun.gd" id="3_q5t8j"]
+[ext_resource type="Texture2D" uid="uid://clw4pld0kepqh" path="res://assets/crosshair008.png" id="4_gfmxj"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3fcy1"]
+radius = 63.7887
+
+[node name="player_test" type="CharacterBody2D"]
+scale = Vector2(0.5, 0.5)
+script = ExtResource("1_srs4i")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_3fcy1")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_8dhjr")
+
+[node name="grapple_gun" type="Node2D" parent="."]
+script = ExtResource("3_q5t8j")
+grapple_force = 400
+
+[node name="RayCast2D" type="RayCast2D" parent="grapple_gun"]
+rotation = -1.5708
+target_position = Vector2(0, 400)
+
+[node name="Crosshair" type="Sprite2D" parent="."]
+texture = ExtResource("4_gfmxj")
