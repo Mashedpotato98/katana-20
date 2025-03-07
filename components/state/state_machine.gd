@@ -30,6 +30,7 @@ func on_child_transition(state,new_state_name):
 	var new_state = states.get(new_state_name.to_lower())
 
 	if !new_state:
+		print('NEW STATE DOESNT EXIST')
 		return
 
 	if current_state:
@@ -37,6 +38,6 @@ func on_child_transition(state,new_state_name):
 		new_state.Enter()
 		current_state = new_state
 
-func update_physics(delta):
+func update_physics(Delta):
 	if current_state:
-		current_state.physics_update(delta)
+		current_state.physics_update(Delta)
