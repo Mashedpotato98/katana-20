@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://bgxvktplx3qnl"]
+[gd_scene load_steps=7 format=3 uid="uid://bgxvktplx3qnl"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_qewde"]
 [ext_resource type="Script" path="res://player/grappling/grapple_controller.gd" id="2_vt1hj"]
+[ext_resource type="Texture2D" uid="uid://clw4pld0kepqh" path="res://assets/crosshair008.png" id="3_yhrs4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cvqs2"]
 size = Vector2(8, 16)
@@ -36,6 +37,7 @@ stiffness = 50.0
 target_position = Vector2(150, 0)
 
 [node name="Line2D" type="Line2D" parent="grapple_controller"]
-points = PackedVector2Array(-2, 49)
+points = PackedVector2Array(0, 0)
 
 [node name="cross_hair" type="Sprite2D" parent="."]
+texture = ExtResource("3_yhrs4")

@@ -1,16 +1,19 @@
 extends Node2D
 
 
-@export var rest_length = 2.0
-@export var stiffness = 10.0
-@export var damp = 1.0
+@export var rest_length:float = 1.0
+@export var stiffness:float = 30.0
+@export var damp:float = 20.0
 
 @onready var player:CharacterBody2D = get_parent()
 @onready var ray:RayCast2D = $RayCast2D
 @onready var rope:Line2D = $Line2D
 
-var launched = false
+var launched:bool = false
 var target: Vector2
+
+func _draw() -> void:
+	draw_line(position,target,Color.ALICE_BLUE)
 
 func _process(delta):
 	   
@@ -24,6 +27,7 @@ func _process(delta):
 
 func launch():
 	if ray.is_colliding():
+		queue_redraw()
 		launched = true
 		target = ray.get_collision_point()
 		rope.show()
@@ -50,3 +54,7 @@ func handle_grapple(delta):
 		force = spring_force + damping
 	
 	player.velocity += force * delta
+	update_rope()
+
+func update_rope():
+	rope.set_point_position(0, to_local(target))
