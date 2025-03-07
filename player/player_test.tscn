@@ -1,21 +1,23 @@
-[gd_scene load_steps=6 format=3 uid="uid://chitpd4svd62l"]
+[gd_scene load_steps=8 format=3 uid="uid://chitpd4svd62l"]
 
 [ext_resource type="Texture2D" uid="uid://cf2rg4c1fvhv1" path="res://icon.svg" id="1_8dhjr"]
-[ext_resource type="Script" path="res://player/player_test.gd" id="1_srs4i"]
-[ext_resource type="Script" path="res://player/grapple_gun.gd" id="3_q5t8j"]
+[ext_resource type="Script" uid="uid://ci6f660iyn27" path="res://player/player_test.gd" id="1_srs4i"]
+[ext_resource type="Script" uid="uid://cgs2sgcy2olt2" path="res://player/grapple_gun.gd" id="3_q5t8j"]
 [ext_resource type="Texture2D" uid="uid://clw4pld0kepqh" path="res://assets/crosshair008.png" id="4_gfmxj"]
+[ext_resource type="PackedScene" uid="uid://byknuax2sew4u" path="res://components/state/state_machine.tscn" id="5_5p3lv"]
+[ext_resource type="Script" uid="uid://dlf2jxqbkrk2q" path="res://player/states/playerWalk.gd" id="6_kksq1"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3fcy1"]
-radius = 63.7887
+radius = 17.72
 
 [node name="player_test" type="CharacterBody2D"]
-scale = Vector2(0.5, 0.5)
 script = ExtResource("1_srs4i")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_3fcy1")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.3, 0.3)
 texture = ExtResource("1_8dhjr")
 
 [node name="grapple_gun" type="Node2D" parent="."]
@@ -28,3 +30,10 @@ target_position = Vector2(0, 400)
 
 [node name="Crosshair" type="Sprite2D" parent="."]
 texture = ExtResource("4_gfmxj")
+
+[node name="state_machine" parent="." instance=ExtResource("5_5p3lv")]
+
+[node name="playerWalk" type="Node" parent="state_machine" node_paths=PackedStringArray("player")]
+script = ExtResource("6_kksq1")
+player = NodePath("../..")
+metadata/_custom_type_script = "uid://dlf2jxqbkrk2q"

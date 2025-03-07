@@ -1,4 +1,5 @@
 extends Node2D
+class_name STATE_MANAGER
 
 @export var initial_state:state_machine
 
@@ -14,13 +15,13 @@ func _ready():
 		initial_state.Enter()
 		current_state = initial_state
 
-func _process(delta):
-	if current_state:
-		current_state.update(delta)
+#func _process(delta):
+	#if current_state:
+		#current_state.update(delta)
 
-func _physics_process(delta):
-	if current_state:
-		current_state.physics_update(delta)
+#func _physics_process(delta):
+	#if current_state:
+		#current_state.physics_update(delta)
 
 func on_child_transition(state,new_state_name):
 	if state != current_state:
@@ -35,3 +36,7 @@ func on_child_transition(state,new_state_name):
 		current_state.Exit()
 		new_state.Enter()
 		current_state = new_state
+
+func update_physics(delta):
+	if current_state:
+		current_state.physics_update(delta)

@@ -1,0 +1,2 @@
+extends enemyWander
+class_name TerryWander
