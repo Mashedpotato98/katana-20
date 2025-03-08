@@ -19,6 +19,9 @@ func physics_update(_delta:float):
 	if Input.is_action_just_released("melee") and released == false:
 		dash()
 
+func Exit():
+	check_collision()
+
 func dash():
 	released = true
 	target = ray.to_global(ray.target_position)
@@ -26,3 +29,8 @@ func dash():
 	print(target)
 	var direction:Vector2 = player.position.direction_to(target).normalized()
 	player.velocity = direction * 200
+
+func check_collision():
+	ray.enabled = true
+	if ray.is_colliding():
+		pass

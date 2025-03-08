@@ -1,10 +1,11 @@
 extends state_machine
 class_name playerWalk
 
-#region movement variables
 @export var player:CharacterBody2D 
 @export var grapple_gun:Node2D
+@export var sword_ray:RayCast2D
 
+#region movement variables
 @export var max_speed:float = 300.0
 @export var jump_velocity:float = -400.0
 
@@ -19,6 +20,7 @@ var has_transitioned:bool = false
 #endregion
 
 func Enter():
+	sword_ray.enabled = false
 	grapple_gun.process_mode = Node.PROCESS_MODE_INHERIT
 
 func physics_update(_delta:float):

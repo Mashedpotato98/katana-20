@@ -50,3 +50,4 @@ maximum_pull_force = 200
 metadata/_custom_type_script = "uid://cg43kn37v2bf5"
 
 [node name="swordRay" type="RayCast2D" parent="."]
+enabled = false
