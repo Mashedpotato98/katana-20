@@ -4,4 +4,5 @@ extends Entity
 
 func _physics_process(delta: float) -> void:
 	move_and_slide()
+	velocity += get_gravity() * deltaTime
 	state_manager.update_physics(deltaTime)

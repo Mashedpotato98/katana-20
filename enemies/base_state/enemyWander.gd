@@ -10,9 +10,6 @@ var direction:Vector2 = Vector2.RIGHT
 @export var speed:int
 #endregion
 
-func Enter():
-	change_direction()
-
 func physics_update(_delta:float):
 	enemy.velocity = direction * speed
 	
@@ -23,10 +20,16 @@ func physics_update(_delta:float):
 func raycast_manager():
 	if wallDetect.is_colliding():
 		change_direction()
+		print('1')
 
-	if !ledgeDetection.is_colliding():
+	if not ledgeDetection.is_colliding():
 		change_direction()
+		print('2')
 
 func change_direction():
-	direction.x *= -1
-	print(direction)
+	if direction == Vector2.RIGHT:
+		direction = Vector2.LEFT
+		enemy.scale.x = -1
+	elif direction == Vector2.LEFT:
+		direction = Vector2.RIGHT
+		enemy.scale.x = 1
