@@ -1,10 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://dhju3dgw5q2v1"]
+[gd_scene load_steps=6 format=3 uid="uid://dhju3dgw5q2v1"]
 
 [ext_resource type="PackedScene" uid="uid://chitpd4svd62l" path="res://player/player_test.tscn" id="2_jd2vw"]
 [ext_resource type="Texture2D" uid="uid://cf2rg4c1fvhv1" path="res://icon.svg" id="2_pbb1o"]
+[ext_resource type="PackedScene" uid="uid://bo8luu7l54ygu" path="res://enemies/strong_terry/strong_terry.tscn" id="3_mioqa"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_modsj"]
-size = Vector2(1156, 190)
+size = Vector2(928, 190)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_44y1r"]
 size = Vector2(105, 44)
@@ -15,12 +16,12 @@ size = Vector2(105, 44)
 position = Vector2(92, 179)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(486, 85)
+position = Vector2(372, 85)
 shape = SubResource("RectangleShape2D_modsj")
 
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
-position = Vector2(489.5, 82.5)
-scale = Vector2(9.07031, 1.61719)
+position = Vector2(377.5, 82.5)
+scale = Vector2(7.32031, 1.61719)
 texture = ExtResource("2_pbb1o")
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="."]
@@ -62,3 +63,6 @@ texture = ExtResource("2_pbb1o")
 
 [node name="player_test" parent="." instance=ExtResource("2_jd2vw")]
 position = Vector2(251, 109)
+
+[node name="strong_terry" parent="." instance=ExtResource("3_mioqa")]
+position = Vector2(623, 145)

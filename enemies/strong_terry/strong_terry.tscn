@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://bo8luu7l54ygu"]
+[gd_scene load_steps=7 format=3 uid="uid://bo8luu7l54ygu"]
 
 [ext_resource type="Texture2D" uid="uid://cf2rg4c1fvhv1" path="res://icon.svg" id="1_dxj8f"]
 [ext_resource type="PackedScene" uid="uid://byknuax2sew4u" path="res://components/state/state_machine.tscn" id="1_h44e6"]
+[ext_resource type="Script" uid="uid://d3lluginso05n" path="res://enemies/strong_terry/strong_terry.gd" id="1_tdqff"]
 [ext_resource type="Script" uid="uid://tvbromcqoq5n" path="res://enemies/strong_terry/states/TerryWander.gd" id="2_4cnyu"]
 [ext_resource type="Script" uid="uid://btac5a0q5dqqo" path="res://enemies/strong_terry/states/TerryChase.gd" id="4_sur7q"]
 
@@ -9,6 +10,7 @@
 radius = 19.105
 
 [node name="strong_terry" type="CharacterBody2D" groups=["entity"]]
+script = ExtResource("1_tdqff")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.3, 0.3)
@@ -20,12 +22,21 @@ shape = SubResource("CircleShape2D_dxj8f")
 [node name="state_machine" parent="." node_paths=PackedStringArray("initial_state") instance=ExtResource("1_h44e6")]
 initial_state = NodePath("TerryWander")
 
-[node name="TerryWander" type="Node" parent="state_machine" node_paths=PackedStringArray("enemy")]
+[node name="TerryWander" type="Node" parent="state_machine" node_paths=PackedStringArray("enemy", "wallDetect", "ledgeDetection")]
 script = ExtResource("2_4cnyu")
 enemy = NodePath("../..")
+wallDetect = NodePath("../../WallDetect")
+ledgeDetection = NodePath("../../LedgeDetection")
+speed = 50
 metadata/_custom_type_script = "uid://tvbromcqoq5n"
 
 [node name="TerryChase" type="Node" parent="state_machine" node_paths=PackedStringArray("enemy")]
 script = ExtResource("4_sur7q")
 enemy = NodePath("../..")
 metadata/_custom_type_script = "uid://btac5a0q5dqqo"
+
+[node name="WallDetect" type="RayCast2D" parent="."]
+target_position = Vector2(40, 0)
+
+[node name="LedgeDetection" type="RayCast2D" parent="."]
+position = Vector2(36, 1)
