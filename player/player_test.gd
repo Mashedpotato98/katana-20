@@ -1,1 +1,1 @@
-extends Entity
+extends Player

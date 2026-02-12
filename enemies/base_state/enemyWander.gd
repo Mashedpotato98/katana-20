@@ -1,4 +1,4 @@
-extends state_machine
+extends state
 class_name enemyWander
 
 @export var enemy:CharacterBody2D

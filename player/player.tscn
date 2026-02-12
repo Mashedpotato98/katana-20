@@ -1,13 +1,16 @@
-[gd_scene load_steps=7 format=3 uid="uid://bgxvktplx3qnl"]
+[gd_scene format=3 uid="uid://bgxvktplx3qnl"]
 
 [ext_resource type="Script" uid="uid://cslsdgo6g47qr" path="res://player/player.gd" id="1_qewde"]
 [ext_resource type="Script" uid="uid://di4oqm7nm2hu2" path="res://player/grappling/grapple_controller.gd" id="2_vt1hj"]
 [ext_resource type="Texture2D" uid="uid://clw4pld0kepqh" path="res://assets/crosshair008.png" id="3_yhrs4"]
+[ext_resource type="PackedScene" uid="uid://byknuax2sew4u" path="res://components/state/state_machine.tscn" id="4_g6k8r"]
+[ext_resource type="Script" uid="uid://cg43kn37v2bf5" path="res://player/states/playerDash.gd" id="5_boad6"]
+[ext_resource type="Script" uid="uid://dlf2jxqbkrk2q" path="res://player/states/playerWalk.gd" id="6_rgyib"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cvqs2"]
 size = Vector2(8, 16)
 
-[sub_resource type="Image" id="Image_g1dw6"]
+[sub_resource type="Image" id="Image_g6k8r"]
 data = {
 "data": PackedByteArray(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 3, 255, 1, 1, 3, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
 "format": "RGBA8",
@@ -17,27 +20,42 @@ data = {
 }
 
 [sub_resource type="ImageTexture" id="ImageTexture_8ht6m"]
-image = SubResource("Image_g1dw6")
+image = SubResource("Image_g6k8r")
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" unique_id=122802606]
 script = ExtResource("1_qewde")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=632126902]
 position = Vector2(-1, 0)
 shape = SubResource("RectangleShape2D_cvqs2")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=8514591]
 texture = SubResource("ImageTexture_8ht6m")
 
-[node name="grapple_controller" type="Node2D" parent="."]
+[node name="grapple_controller" type="Node2D" parent="." unique_id=273830957]
 script = ExtResource("2_vt1hj")
 stiffness = 50.0
 
-[node name="RayCast2D" type="RayCast2D" parent="grapple_controller"]
+[node name="RayCast2D" type="RayCast2D" parent="grapple_controller" unique_id=818810913]
 target_position = Vector2(150, 0)
 
-[node name="Line2D" type="Line2D" parent="grapple_controller"]
+[node name="Line2D" type="Line2D" parent="grapple_controller" unique_id=1753996780]
 points = PackedVector2Array(0, 0)
 
-[node name="cross_hair" type="Sprite2D" parent="."]
+[node name="cross_hair" type="Sprite2D" parent="." unique_id=1539216639]
 texture = ExtResource("3_yhrs4")
+
+[node name="state_machine" parent="." unique_id=1700750132 node_paths=PackedStringArray("initial_state") instance=ExtResource("4_g6k8r")]
+initial_state = NodePath("playerWalk")
+
+[node name="playerSwordDash" type="Node" parent="state_machine" unique_id=730651810 node_paths=PackedStringArray("ray", "controller")]
+script = ExtResource("5_boad6")
+ray = NodePath("../../grapple_controller/RayCast2D")
+maximum_pull_force = 1
+controller = NodePath("../..")
+metadata/_custom_type_script = "uid://cg43kn37v2bf5"
+
+[node name="playerWalk" type="Node" parent="state_machine" unique_id=833571251 node_paths=PackedStringArray("controller")]
+script = ExtResource("6_rgyib")
+controller = NodePath("../..")
+metadata/_custom_type_script = "uid://dlf2jxqbkrk2q"

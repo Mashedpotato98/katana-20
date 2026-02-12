@@ -1,5 +1,7 @@
 extends Node
-class_name  state_machine
+class_name state
+
+@export var controller:CharacterBody2D
 
 signal Transitioned(state,new_state_name)
 
