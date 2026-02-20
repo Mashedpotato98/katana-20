@@ -6,13 +6,13 @@ class_name state
 signal Transitioned(state,new_state_name)
 
 func Enter():
-	pass
+        pass
 
 func Exit():
-	pass
+        pass
 
 func update(_delta:float):
-	pass
+        pass
 
 func physics_update(_delta:float):
-	pass
+        pass

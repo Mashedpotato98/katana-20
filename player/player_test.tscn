@@ -1,12 +1,12 @@
-[gd_scene load_steps=9 format=3 uid="uid://chitpd4svd62l"]
+[gd_scene format=3 uid="uid://chitpd4svd62l"]
 
 [ext_resource type="Texture2D" uid="uid://cf2rg4c1fvhv1" path="res://icon.svg" id="1_8dhjr"]
 [ext_resource type="Script" uid="uid://ci6f660iyn27" path="res://player/player_test.gd" id="1_srs4i"]
-[ext_resource type="Script" uid="uid://cgs2sgcy2olt2" path="res://player/grapple_gun.gd" id="3_q5t8j"]
+[ext_resource type="Script" uid="uid://bxprh1h1twwsh" path="res://player/grapple_gun.gd" id="3_q5t8j"]
 [ext_resource type="Texture2D" uid="uid://clw4pld0kepqh" path="res://assets/crosshair008.png" id="4_gfmxj"]
 [ext_resource type="PackedScene" uid="uid://byknuax2sew4u" path="res://components/state/state_machine.tscn" id="5_5p3lv"]
-[ext_resource type="Script" uid="uid://dlf2jxqbkrk2q" path="res://player/states/playerWalk.gd" id="6_kksq1"]
-[ext_resource type="Script" uid="uid://cg43kn37v2bf5" path="res://player/states/playerDash.gd" id="7_6virb"]
+[ext_resource type="Script" uid="uid://dlf2jxqbkrk2q" path="res://player/states/PlayerWalk.gd" id="6_kksq1"]
+[ext_resource type="Script" uid="uid://cg43kn37v2bf5" path="res://player/states/PlayerMelee.gd" id="7_6virb"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3fcy1"]
 radius = 17.72

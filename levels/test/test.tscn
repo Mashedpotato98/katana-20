@@ -1,8 +1,7 @@
 [gd_scene format=3 uid="uid://dhju3dgw5q2v1"]
 
 [ext_resource type="Texture2D" uid="uid://cf2rg4c1fvhv1" path="res://icon.svg" id="2_pbb1o"]
-[ext_resource type="PackedScene" uid="uid://bo8luu7l54ygu" path="res://enemies/strong_terry/strong_terry.tscn" id="3_mioqa"]
-[ext_resource type="PackedScene" uid="uid://bgxvktplx3qnl" path="res://player/player.tscn" id="4_kqk0q"]
+[ext_resource type="PackedScene" uid="uid://d3i5x08nsedmy" path="res://player/player.tscn" id="4_kqk0q"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_modsj"]
 size = Vector2(928, 190)
@@ -60,9 +59,6 @@ shape = SubResource("RectangleShape2D_44y1r")
 position = Vector2(496.5, 21.5)
 scale = Vector2(0.851562, 0.367188)
 texture = ExtResource("2_pbb1o")
-
-[node name="strong_terry" parent="." unique_id=1980549206 instance=ExtResource("3_mioqa")]
-position = Vector2(623, 145)
 
 [node name="Player" parent="." unique_id=122802606 instance=ExtResource("4_kqk0q")]
 position = Vector2(384, 128)
