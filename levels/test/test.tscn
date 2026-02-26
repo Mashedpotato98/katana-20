@@ -13,6 +13,7 @@ size = Vector2(105, 44)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1698103216]
 position = Vector2(92, 179)
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=795836027]
 position = Vector2(372, 85)
@@ -24,6 +25,7 @@ scale = Vector2(7.32031, 1.61719)
 texture = ExtResource("2_pbb1o")
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="." unique_id=1506089229]
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2" unique_id=63711697]
 position = Vector2(497, 22)
@@ -36,6 +38,7 @@ texture = ExtResource("2_pbb1o")
 
 [node name="StaticBody2D3" type="StaticBody2D" parent="." unique_id=1629561776]
 position = Vector2(284, 0)
+collision_mask = 0
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3" unique_id=302568035]
@@ -49,6 +52,7 @@ texture = ExtResource("2_pbb1o")
 
 [node name="StaticBody2D4" type="StaticBody2D" parent="." unique_id=1999669035]
 position = Vector2(-262, 1)
+collision_mask = 0
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D4" unique_id=868263245]

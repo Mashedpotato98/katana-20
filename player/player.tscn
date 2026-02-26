@@ -1,17 +1,17 @@
 [gd_scene format=3 uid="uid://d3i5x08nsedmy"]
 
 [ext_resource type="Script" uid="uid://cslsdgo6g47qr" path="res://player/player.gd" id="1_qewde"]
-[ext_resource type="Script" uid="uid://di4oqm7nm2hu2" path="res://player/grappling/grapple_controller.gd" id="2_vt1hj"]
 [ext_resource type="Texture2D" uid="uid://clw4pld0kepqh" path="res://assets/crosshair008.png" id="3_yhrs4"]
 [ext_resource type="PackedScene" uid="uid://byknuax2sew4u" path="res://components/state/state_machine.tscn" id="4_g6k8r"]
 [ext_resource type="Script" uid="uid://cg43kn37v2bf5" path="res://player/states/PlayerMelee.gd" id="5_boad6"]
 [ext_resource type="Script" uid="uid://dlf2jxqbkrk2q" path="res://player/states/PlayerWalk.gd" id="6_rgyib"]
 [ext_resource type="Script" uid="uid://byybmaoclufuf" path="res://player/states/PlayerMeleeCharge.gd" id="7_boad6"]
+[ext_resource type="Script" uid="uid://3wwld143mnwm" path="res://player/states/PlayerGrapple.gd" id="8_rgyib"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cvqs2"]
 size = Vector2(8, 16)
 
-[sub_resource type="Image" id="Image_boad6"]
+[sub_resource type="Image" id="Image_rgyib"]
 data = {
 "data": PackedByteArray(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 3, 255, 1, 1, 3, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
 "format": "RGBA8",
@@ -21,11 +21,15 @@ data = {
 }
 
 [sub_resource type="ImageTexture" id="ImageTexture_8ht6m"]
-image = SubResource("Image_boad6")
+image = SubResource("Image_rgyib")
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rgyib"]
+radius = 12.0
+height = 34.0
 
 [node name="Player" type="CharacterBody2D" unique_id=122802606]
+collision_layer = 2
 script = ExtResource("1_qewde")
-max_melee_range = 200
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=632126902]
 position = Vector2(-1, 0)
@@ -34,55 +38,101 @@ shape = SubResource("RectangleShape2D_cvqs2")
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=8514591]
 texture = SubResource("ImageTexture_8ht6m")
 
-[node name="Ray" type="RayCast2D" parent="." unique_id=636177797]
-
-[node name="GrappleController" type="Node2D" parent="." unique_id=273830957]
-script = ExtResource("2_vt1hj")
-stiffness = 50.0
-
-[node name="RayCast2D" type="RayCast2D" parent="GrappleController" unique_id=818810913]
-target_position = Vector2(150, 0)
-
-[node name="Line2D" type="Line2D" parent="GrappleController" unique_id=1753996780]
-points = PackedVector2Array(0, 0)
-
 [node name="CrossHair" type="Sprite2D" parent="." unique_id=1539216639]
 texture = ExtResource("3_yhrs4")
 
 [node name="StateMachine" parent="." unique_id=1700750132 node_paths=PackedStringArray("initial_state") instance=ExtResource("4_g6k8r")]
 initial_state = NodePath("PlayerWalk")
 
-[node name="PlayerMelee" type="Node" parent="StateMachine" unique_id=730651810 node_paths=PackedStringArray("ray", "melee_timer", "controller")]
+[node name="PlayerMelee" type="Node" parent="StateMachine" unique_id=730651810 node_paths=PackedStringArray("ray", "melee_timer", "melee_cooldown_timer", "controller")]
 script = ExtResource("5_boad6")
-ray = NodePath("../../GrappleController/RayCast2D")
-melee_timer = NodePath("../../MeleeTimer")
+ray = NodePath("")
+melee_timer = NodePath("../../timers/MeleeTimer")
+melee_cooldown_timer = NodePath("../../timers/MeleeCooldownTimer")
 melee_speed = 500
 melee_time = 0.3
 controller = NodePath("../..")
 metadata/_custom_type_script = "uid://cg43kn37v2bf5"
 
-[node name="playerMeleeCharge" type="Node" parent="StateMachine" unique_id=1605380042 node_paths=PackedStringArray("charge_timer", "controller")]
+[node name="playerMeleeCharge" type="Node" parent="StateMachine" unique_id=1605380042 node_paths=PackedStringArray("charge_timer", "melee_cooldown_timer", "melee_attack_line", "melee_ray", "controller")]
 script = ExtResource("7_boad6")
-charge_timer = NodePath("../../MeleeChargeTimer")
+charge_timer = NodePath("../../timers/MeleeChargeTimer")
+melee_cooldown_timer = NodePath("../../timers/MeleeCooldownTimer")
+melee_attack_line = NodePath("../../MeleeAttackLine")
+melee_ray = NodePath("../../ray_collision/MeleeRay")
+melee_line_colour = Color(0.54901963, 0, 0, 0.4627451)
 controller = NodePath("../..")
 metadata/_custom_type_script = "uid://byybmaoclufuf"
 
-[node name="PlayerWalk" type="Node" parent="StateMachine" unique_id=833571251 node_paths=PackedStringArray("ray", "melee_cooldown_timer", "controller")]
+[node name="PlayerWalk" type="Node" parent="StateMachine" unique_id=833571251 node_paths=PackedStringArray("melee_ray", "grapple_ray", "melee_cooldown_timer", "grapple_cooldown_timer", "controller")]
 script = ExtResource("6_rgyib")
-ray = NodePath("../../Ray")
-melee_cooldown_timer = NodePath("../../MeleeCooldownTimer")
+melee_ray = NodePath("../../ray_collision/MeleeRay")
+grapple_ray = NodePath("../../ray_collision/GrappleRay")
+melee_cooldown_timer = NodePath("../../timers/MeleeCooldownTimer")
+grapple_cooldown_timer = NodePath("../../timers/GrappleCooldownTimer")
 controller = NodePath("../..")
 metadata/_custom_type_script = "uid://dlf2jxqbkrk2q"
 
-[node name="MeleeChargeTimer" type="Timer" parent="." unique_id=152960758]
+[node name="PlayerGrapple" type="Node" parent="StateMachine" unique_id=2054666218 node_paths=PackedStringArray("grapple_ray", "grapple_collision_check_area", "grapple_cooldown_timer", "melee_attack_line", "controller")]
+script = ExtResource("8_rgyib")
+grapple_ray = NodePath("../../ray_collision/GrappleRay")
+grapple_collision_check_area = NodePath("../../ray_collision/GrappleCollisionCheck")
+grapple_cooldown_timer = NodePath("../../timers/GrappleCooldownTimer")
+melee_attack_line = NodePath("../../MeleeAttackLine")
+grapple_pull_force = 200
+controller = NodePath("../..")
+metadata/_custom_type_script = "uid://3wwld143mnwm"
+
+[node name="ray_collision" type="Node" parent="." unique_id=412698622]
+
+[node name="MeleeRay" type="RayCast2D" parent="ray_collision" unique_id=636177797]
+target_position = Vector2(100, 0)
+collision_mask = 4
+
+[node name="GrappleRay" type="RayCast2D" parent="ray_collision" unique_id=1846430602]
+target_position = Vector2(150, 0)
+
+[node name="GrappleCollisionCheck" type="Area2D" parent="ray_collision" unique_id=629304948]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ray_collision/GrappleCollisionCheck" unique_id=1267760982]
+shape = SubResource("CapsuleShape2D_rgyib")
+
+[node name="timers" type="Node" parent="." unique_id=710328846]
+
+[node name="MeleeChargeTimer" type="Timer" parent="timers" unique_id=152960758]
 one_shot = true
 
-[node name="MeleeCooldownTimer" type="Timer" parent="." unique_id=1189284988]
+[node name="MeleeCooldownTimer" type="Timer" parent="timers" unique_id=1189284988]
+one_shot = true
+autostart = true
+
+[node name="MeleeTimer" type="Timer" parent="timers" unique_id=16465016]
 one_shot = true
 
-[node name="MeleeTimer" type="Timer" parent="." unique_id=16465016]
+[node name="GrappleCooldownTimer" type="Timer" parent="timers" unique_id=1974267601]
 one_shot = true
 
-[connection signal="timeout" from="MeleeChargeTimer" to="StateMachine/playerMeleeCharge" method="_on_melee_charge_timer_timeout"]
-[connection signal="timeout" from="MeleeCooldownTimer" to="StateMachine/PlayerWalk" method="_on_melee_cooldown_timer_timeout"]
-[connection signal="timeout" from="MeleeTimer" to="StateMachine/PlayerMelee" method="_on_melee_timer_timeout"]
+[node name="MeleeAttackLine" type="Line2D" parent="." unique_id=137495192]
+default_color = Color(1, 1, 0.28627452, 0.3372549)
+
+[node name="StaticHud" type="CanvasLayer" parent="." unique_id=998906162]
+
+[node name="test_misc" type="Node" parent="." unique_id=202414180]
+
+[node name="CanGrappleLabel" type="Label" parent="test_misc" unique_id=1406752130]
+unique_name_in_owner = true
+visible = false
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="CanMeleeLabel" type="Label" parent="test_misc" unique_id=1308935530]
+unique_name_in_owner = true
+visible = false
+offset_left = -33.0
+offset_top = -24.0
+offset_right = 7.0
+offset_bottom = -1.0
+
+[node name="MeleeChargeBar" type="TextureProgressBar" parent="." unique_id=739482752]
+offset_right = 40.0
+offset_bottom = 40.0
