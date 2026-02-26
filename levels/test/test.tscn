@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dhju3dgw5q2v1"]
 
 [ext_resource type="Texture2D" uid="uid://cf2rg4c1fvhv1" path="res://icon.svg" id="2_pbb1o"]
+[ext_resource type="PackedScene" uid="uid://bo8luu7l54ygu" path="res://enemies/strong_terry/strong_terry.tscn" id="3_mioqa"]
 [ext_resource type="PackedScene" uid="uid://d3i5x08nsedmy" path="res://player/player.tscn" id="4_kqk0q"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_modsj"]
@@ -8,6 +9,11 @@ size = Vector2(928, 190)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_44y1r"]
 size = Vector2(105, 44)
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_mioqa"]
+vertices = PackedVector2Array(5.859375, 117.296875, 58.382813, 9.7578125, 322.2422, 79.40625, 869, 134.38281, 655.1172, -24.929688)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2), PackedInt32Array(3, 0, 2), PackedInt32Array(4, 3, 2)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(322, 69, 53, -2, -10, 127, 900, 145, 657, -36)])
 
 [node name="Test" type="Node2D" unique_id=1876127669]
 
@@ -66,3 +72,10 @@ texture = ExtResource("2_pbb1o")
 
 [node name="Player" parent="." unique_id=122802606 instance=ExtResource("4_kqk0q")]
 position = Vector2(384, 128)
+
+[node name="strong_terry" parent="." unique_id=1255156356 node_paths=PackedStringArray("target") instance=ExtResource("3_mioqa")]
+position = Vector2(425, 119)
+target = NodePath("../Player")
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="." unique_id=1284219183]
+navigation_polygon = SubResource("NavigationPolygon_mioqa")

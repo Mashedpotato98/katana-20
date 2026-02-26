@@ -25,7 +25,7 @@ project/assembly_name="katana-20"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/godot_vim/plugin.cfg")
+enabled=PackedStringArray("res://addons/godot_vim/plugin.cfg", "res://addons/relative_line_numbers/plugin.cfg", "res://addons/script-ide/plugin.cfg")
 
 [global_group]
 

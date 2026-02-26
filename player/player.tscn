@@ -4,14 +4,14 @@
 [ext_resource type="Texture2D" uid="uid://clw4pld0kepqh" path="res://assets/crosshair008.png" id="3_yhrs4"]
 [ext_resource type="PackedScene" uid="uid://byknuax2sew4u" path="res://components/state/state_machine.tscn" id="4_g6k8r"]
 [ext_resource type="Script" uid="uid://cg43kn37v2bf5" path="res://player/states/PlayerMelee.gd" id="5_boad6"]
-[ext_resource type="Script" uid="uid://dlf2jxqbkrk2q" path="res://player/states/PlayerWalk.gd" id="6_rgyib"]
+[ext_resource type="Script" path="res://player/states/PlayerWalk.gd" id="6_rgyib"]
 [ext_resource type="Script" uid="uid://byybmaoclufuf" path="res://player/states/PlayerMeleeCharge.gd" id="7_boad6"]
 [ext_resource type="Script" uid="uid://3wwld143mnwm" path="res://player/states/PlayerGrapple.gd" id="8_rgyib"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cvqs2"]
 size = Vector2(8, 16)
 
-[sub_resource type="Image" id="Image_rgyib"]
+[sub_resource type="Image" id="Image_boad6"]
 data = {
 "data": PackedByteArray(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 3, 255, 1, 1, 3, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
 "format": "RGBA8",
@@ -21,7 +21,7 @@ data = {
 }
 
 [sub_resource type="ImageTexture" id="ImageTexture_8ht6m"]
-image = SubResource("Image_rgyib")
+image = SubResource("Image_boad6")
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rgyib"]
 radius = 12.0
@@ -44,9 +44,8 @@ texture = ExtResource("3_yhrs4")
 [node name="StateMachine" parent="." unique_id=1700750132 node_paths=PackedStringArray("initial_state") instance=ExtResource("4_g6k8r")]
 initial_state = NodePath("PlayerWalk")
 
-[node name="PlayerMelee" type="Node" parent="StateMachine" unique_id=730651810 node_paths=PackedStringArray("ray", "melee_timer", "melee_cooldown_timer", "controller")]
+[node name="PlayerMelee" type="Node" parent="StateMachine" unique_id=730651810 node_paths=PackedStringArray("melee_timer", "melee_cooldown_timer", "controller")]
 script = ExtResource("5_boad6")
-ray = NodePath("")
 melee_timer = NodePath("../../timers/MeleeTimer")
 melee_cooldown_timer = NodePath("../../timers/MeleeCooldownTimer")
 melee_speed = 500
@@ -70,6 +69,8 @@ melee_ray = NodePath("../../ray_collision/MeleeRay")
 grapple_ray = NodePath("../../ray_collision/GrappleRay")
 melee_cooldown_timer = NodePath("../../timers/MeleeCooldownTimer")
 grapple_cooldown_timer = NodePath("../../timers/GrappleCooldownTimer")
+max_speed = null
+jump_velocity = null
 controller = NodePath("../..")
 metadata/_custom_type_script = "uid://dlf2jxqbkrk2q"
 
