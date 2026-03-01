@@ -5,19 +5,25 @@ class_name PlayerMeleeCharge extends state
 @export var melee_cooldown_timer:Timer
 @export var melee_attack_line:Line2D
 @export var melee_ray:RayCast2D
+@export var melee_charge_bar:TextureProgressBar
 
 @export var melee_line_colour:Color
+@export var melee_ray_length:int
 
-var max_charge_time:int = 1
+var max_charge_time:int = 30
+
 
 
 func _ready() -> void:
         melee_attack_line.default_color = melee_line_colour
         charge_timer.timeout.connect(_on_melee_charge_timer_timeout)
+        melee_charge_bar.max_value = max_charge_time * 6 # magic number go boo. maybe it works because 60 frames per second?
+        melee_ray.target_position = Vector2(melee_ray_length, 0.0)
 
 func Enter():
         enable_melee_line()
-        charge_timer.start(max_charge_time)
+        charge_timer.start(max_charge_time / 10)
+        melee_charge_bar.visible = true
 
 func physics_update(_delta:float):
         controller.velocity = Vector2.ZERO
@@ -26,6 +32,9 @@ func physics_update(_delta:float):
         update_melee_line()
 
         charge()
+        #await get_tree().create_timer(1.0).timeout
+        if Input.is_action_pressed(&"melee"):
+                melee_charge_bar.value += 1
 
 func charge():
         if Input.is_action_just_released("melee"):
@@ -39,13 +48,14 @@ func disable_melee_line():
        melee_attack_line.set_point_position(1, Vector2(0,0))
 
 func update_melee_line():
-        var pos:Vector2 = controller.direction_to_target * 150 # human concession in afallen world 
+        var pos:Vector2 = controller.direction_to_target * melee_ray_length # human concession in afallen world 
         melee_attack_line.set_point_position(0, melee_attack_line.to_local(controller.global_position))
         melee_attack_line.set_point_position(1, pos)
 
 func Exit():
         charge_timer.stop()
         disable_melee_line()
+        melee_charge_bar.visible = false
 
 func _on_melee_charge_timer_timeout() -> void:
         melee_cooldown_timer.start(controller.melee_cooldown_time)

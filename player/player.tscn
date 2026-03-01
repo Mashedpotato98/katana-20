@@ -1,31 +1,22 @@
 [gd_scene format=3 uid="uid://d3i5x08nsedmy"]
 
 [ext_resource type="Script" uid="uid://cslsdgo6g47qr" path="res://player/player.gd" id="1_qewde"]
+[ext_resource type="Texture2D" uid="uid://7lymrpbeqx73" path="res://assets/spritesheet.png" id="2_2ieo8"]
 [ext_resource type="Texture2D" uid="uid://clw4pld0kepqh" path="res://assets/crosshair008.png" id="3_yhrs4"]
 [ext_resource type="PackedScene" uid="uid://byknuax2sew4u" path="res://components/state/state_machine.tscn" id="4_g6k8r"]
 [ext_resource type="Script" uid="uid://cg43kn37v2bf5" path="res://player/states/PlayerMelee.gd" id="5_boad6"]
 [ext_resource type="Script" uid="uid://b00rikxqb2g4w" path="res://player/states/PlayerWalk.gd" id="6_rgyib"]
 [ext_resource type="Script" uid="uid://byybmaoclufuf" path="res://player/states/PlayerMeleeCharge.gd" id="7_boad6"]
+[ext_resource type="Texture2D" uid="uid://bmc6y4py6ofuk" path="res://assets/under.png" id="8_8t03j"]
 [ext_resource type="Script" uid="uid://dytk7ldtxvwp3" path="res://components/entity_components/movement_component.gd" id="8_hg6s5"]
 [ext_resource type="Script" uid="uid://3wwld143mnwm" path="res://player/states/PlayerGrapple.gd" id="8_rgyib"]
+[ext_resource type="Texture2D" uid="uid://bri7cmfffj5bv" path="res://assets/New Piskel-2.png.png" id="9_8t03j"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cvqs2"]
 size = Vector2(8, 16)
 
-[sub_resource type="Image" id="Image_rgyib"]
-data = {
-"data": PackedByteArray(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 3, 255, 1, 1, 3, 255, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 3, 255, 1, 1, 3, 255, 1, 1, 3, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-"format": "RGBA8",
-"height": 16,
-"mipmaps": false,
-"width": 16
-}
-
-[sub_resource type="ImageTexture" id="ImageTexture_8ht6m"]
-image = SubResource("Image_rgyib")
-
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rgyib"]
-radius = 12.0
+radius = 16.0
 height = 34.0
 
 [node name="Player" type="CharacterBody2D" unique_id=122802606]
@@ -37,10 +28,9 @@ position = Vector2(-1, 0)
 shape = SubResource("RectangleShape2D_cvqs2")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=8514591]
-texture = SubResource("ImageTexture_8ht6m")
-
-[node name="CrossHair" type="Sprite2D" parent="." unique_id=1539216639]
-texture = ExtResource("3_yhrs4")
+texture = ExtResource("2_2ieo8")
+hframes = 2
+vframes = 2
 
 [node name="StateMachine" parent="." unique_id=1700750132 node_paths=PackedStringArray("initial_state") instance=ExtResource("4_g6k8r")]
 initial_state = NodePath("PlayerWalk")
@@ -56,13 +46,15 @@ melee_time = 0.3
 controller = NodePath("../..")
 metadata/_custom_type_script = "uid://cg43kn37v2bf5"
 
-[node name="playerMeleeCharge" type="Node" parent="StateMachine" unique_id=1605380042 node_paths=PackedStringArray("charge_timer", "melee_cooldown_timer", "melee_attack_line", "melee_ray", "controller")]
+[node name="playerMeleeCharge" type="Node" parent="StateMachine" unique_id=1605380042 node_paths=PackedStringArray("charge_timer", "melee_cooldown_timer", "melee_attack_line", "melee_ray", "melee_charge_bar", "controller")]
 script = ExtResource("7_boad6")
 charge_timer = NodePath("../../timers/MeleeChargeTimer")
 melee_cooldown_timer = NodePath("../../timers/MeleeCooldownTimer")
 melee_attack_line = NodePath("../../MeleeAttackLine")
 melee_ray = NodePath("../../ray_collision/MeleeRay")
+melee_charge_bar = NodePath("../../MeleeChargeBar")
 melee_line_colour = Color(0.54901963, 0, 0, 0.4627451)
+melee_ray_length = 450
 controller = NodePath("../..")
 metadata/_custom_type_script = "uid://byybmaoclufuf"
 
@@ -82,17 +74,16 @@ grapple_collision_check_area = NodePath("../../ray_collision/GrappleCollisionChe
 grapple_cooldown_timer = NodePath("../../timers/GrappleCooldownTimer")
 melee_attack_line = NodePath("../../MeleeAttackLine")
 grapple_pull_force = 400
+grapple_ray_length = 500
 controller = NodePath("../..")
 metadata/_custom_type_script = "uid://3wwld143mnwm"
 
 [node name="ray_collision" type="Node2D" parent="." unique_id=567367477]
 
 [node name="MeleeRay" type="RayCast2D" parent="ray_collision" unique_id=636177797]
-target_position = Vector2(100, 0)
 collision_mask = 4
 
 [node name="GrappleRay" type="RayCast2D" parent="ray_collision" unique_id=1846430602]
-target_position = Vector2(150, 0)
 
 [node name="GrappleCollisionCheck" type="Area2D" parent="ray_collision" unique_id=629304948]
 
@@ -132,11 +123,23 @@ offset_bottom = -1.0
 [node name="MeleeAttackLine" type="Line2D" parent="." unique_id=137495192]
 default_color = Color(1, 1, 0.28627452, 0.3372549)
 
+[node name="CrossHair" type="Sprite2D" parent="." unique_id=1539216639]
+unique_name_in_owner = true
+position = Vector2(0, 1)
+texture = ExtResource("3_yhrs4")
+
 [node name="StaticHud" type="CanvasLayer" parent="." unique_id=998906162]
 
 [node name="MeleeChargeBar" type="TextureProgressBar" parent="." unique_id=739482752]
-offset_right = 40.0
-offset_bottom = 40.0
+visible = false
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 224.0
+offset_bottom = 96.0
+scale = Vector2(0.5, 0.5)
+fill_mode = 4
+texture_under = ExtResource("9_8t03j")
+texture_progress = ExtResource("8_8t03j")
 
 [node name="components" type="Node" parent="." unique_id=1711426934]
 
@@ -144,3 +147,6 @@ offset_bottom = 40.0
 script = ExtResource("8_hg6s5")
 controller = NodePath("../..")
 metadata/_custom_type_script = "uid://dytk7ldtxvwp3"
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=258004067]
+zoom = Vector2(0.5, 0.5)

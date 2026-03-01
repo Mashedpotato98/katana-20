@@ -15,7 +15,7 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 [application]
 
 config/name="katana-20"
-run/main_scene="res://levels/test/test.tscn"
+run/main_scene="uid://dthm2u2qtocqh"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 

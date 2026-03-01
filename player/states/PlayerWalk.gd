@@ -23,6 +23,9 @@ func _ready() -> void:
                 movement_component.max_speed = max_speed
                 movement_component.jump_force = jump_velocity
 
+func Enter():
+        %CrossHair.visible = true
+
 func physics_update(_delta:float):
                 #%CanGrappleLabel.text = "grapple" + str(can_grapple)
                 #%CanMeleeLabel.text = "melee: " + str(can_melee)
@@ -47,10 +50,14 @@ func melee_attack():
 
 func grapple():
         controller._look_at_mouse_pos( grapple_ray)
+        %CrossHair.global_position = grapple_ray.to_global(grapple_ray.target_position)
         if Input.is_action_just_pressed(&"grapple") and can_grapple: 
                 if grapple_ray.is_colliding():
                         can_grapple = false
                         Transitioned.emit(self, &"PlayerGrapple")
+
+func Exit():
+        %CrossHair.visible = false
 
 func _on_melee_cooldown_timer_timeout() -> void:
         can_melee = true

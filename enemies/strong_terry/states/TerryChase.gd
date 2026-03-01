@@ -9,9 +9,9 @@ var speed:int = 10
 var jump_force:int = 10
 
 func _ready() -> void:
-        movement_component.max_speed = speed
-        movement_component.jump_force = jump_force
-        
+        pass
+        #movement_component.max_speed = speed
+        #movement_component.jump_force = jump_force
 
 func physics_update(_delta:float):
         chase_component.get_direction_to_target()
