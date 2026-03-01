@@ -1,11 +1,12 @@
 class_name PlayerGrapple extends state
 
+@export var move_component:MovementComponent
 @export var grapple_ray:RayCast2D 
 @export var grapple_collision_check_area:Area2D
 @export var grapple_cooldown_timer:Timer
 @export var melee_attack_line:Line2D
 
-@export var grapple_pull_force:int = 5
+@export var grapple_pull_force:int = 200
 
 func _ready() -> void:
         grapple_collision_check_area.body_entered.connect(_grapple_collision_body_entered)
@@ -16,8 +17,7 @@ func physics_update(_delta:float):
                 Transitioned.emit(self, &"PlayerWalk")
 
 func pull_player():
-        controller.velocity = (controller.direction_to_target) * grapple_pull_force
-
+        move_component.push(controller.direction_to_target, grapple_pull_force)
 
 func _grapple_collision_body_entered(body:Node2D):
         if get_parent().current_state == self:
@@ -25,4 +25,4 @@ func _grapple_collision_body_entered(body:Node2D):
                 Transitioned.emit(self, &"PlayerWalk")
 
 func Exit():
-        grapple_cooldown_timer.start()
+        grapple_cooldown_timer.start(controller.grapple_cooldown_time)

@@ -1,10 +1,11 @@
 class_name PlayerMelee extends state
 
+@export var move_component:MovementComponent
 @export var ray:RayCast2D
 @export var melee_timer:Timer
 @export var melee_cooldown_timer:Timer
 
-@export var melee_speed:int = 1
+@export var melee_force:int = 1
 @export var melee_time:float = 1
 
 func _ready() -> void:
@@ -14,7 +15,8 @@ func Enter():
         melee_timer.start(melee_time)
 
 func physics_update(_delta:float):
-        controller.velocity = controller.direction_to_target * melee_speed
+        controller.velocity = controller.direction_to_target * melee_force
+        #move_component.push(controller.direction_to_target, melee_force)
 
 func _on_melee_timer_timeout() -> void:
         Transitioned.emit(self, "PlayerWalk")

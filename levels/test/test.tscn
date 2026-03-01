@@ -13,7 +13,7 @@ size = Vector2(105, 44)
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_mioqa"]
 vertices = PackedVector2Array(5.859375, 117.296875, 58.382813, 9.7578125, 322.2422, 79.40625, 869, 134.38281, 655.1172, -24.929688)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2), PackedInt32Array(3, 0, 2), PackedInt32Array(4, 3, 2)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(322, 69, 53, -2, -10, 127, 900, 145, 657, -36)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(328, -31, 53, -2, -10, 127, 900, 145, 657, -36)])
 
 [node name="Test" type="Node2D" unique_id=1876127669]
 
@@ -70,12 +70,12 @@ position = Vector2(496.5, 21.5)
 scale = Vector2(0.851562, 0.367188)
 texture = ExtResource("2_pbb1o")
 
-[node name="Player" parent="." unique_id=122802606 instance=ExtResource("4_kqk0q")]
-position = Vector2(384, 128)
-
 [node name="strong_terry" parent="." unique_id=1255156356 node_paths=PackedStringArray("target") instance=ExtResource("3_mioqa")]
 position = Vector2(425, 119)
 target = NodePath("../Player")
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="." unique_id=1284219183]
+position = Vector2(0, 28)
 navigation_polygon = SubResource("NavigationPolygon_mioqa")
+
+[node name="Player" parent="." unique_id=122802606 instance=ExtResource("4_kqk0q")]
