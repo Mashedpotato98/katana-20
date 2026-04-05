@@ -9,9 +9,10 @@ class_name PlayerGrapple extends state
 @export var grapple_pull_force:int = 200
 @export var grapple_ray_length:int 
 
-func _ready() -> void:
-        grapple_collision_check_area.body_entered.connect(_grapple_collision_body_entered)
-        grapple_ray.target_position = Vector2(grapple_ray_length, 0)
+func Enter() -> void:
+        if grapple_collision_check_area.body_entered.is_connected(_grapple_collision_body_entered):
+                grapple_collision_check_area.body_entered.connect(_grapple_collision_body_entered)
+        grapple_ray.target_position = Vector2(grapple_ray_length, 0) 
 
 func physics_update(_delta:float):
         pull_player()
@@ -28,3 +29,4 @@ func _grapple_collision_body_entered(body:Node2D):
 
 func Exit():
         grapple_cooldown_timer.start(controller.grapple_cooldown_time)
+        grapple_collision_check_area.body_entered.disconnect(_grapple_collision_body_entered)

@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://btac5a0q5dqqo" path="res://enemies/strong_terry/states/TerryChase.gd" id="4_sur7q"]
 [ext_resource type="Script" uid="uid://cc2nbnianu6tk" path="res://enemies/strong_terry/states/terry_idle.gd" id="5_6rais"]
 [ext_resource type="Script" uid="uid://bqgg71jjohn1t" path="res://components/entity_components/chase_component.gd" id="6_ikt82"]
+[ext_resource type="Script" uid="uid://l2uto07qmssu" path="res://enemies/strong_terry/states/terry_attack.gd" id="6_nnw8a"]
 [ext_resource type="Script" uid="uid://div1lsxq0smqe" path="res://components/entity_components/detection_component.gd" id="7_6rais"]
 [ext_resource type="Script" uid="uid://dytk7ldtxvwp3" path="res://components/entity_components/movement_component.gd" id="7_ugrix"]
 
@@ -15,7 +16,19 @@ load_path = "res://.godot/imported/spritesheet.png-76e0b916bc20d45ac6900db6e21d8
 [sub_resource type="CircleShape2D" id="CircleShape2D_dxj8f"]
 radius = 16.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_6rais"]
+
+[sub_resource type="Animation" id="Animation_nnw8a"]
+resource_name = "attack"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1djey"]
+_data = {
+&"attack": SubResource("Animation_nnw8a")
+}
+
 [node name="strong_terry" type="CharacterBody2D" unique_id=1255156356 groups=["entity"]]
+collision_layer = 4
+collision_mask = 5
 script = ExtResource("1_tdqff")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=2121497507]
@@ -25,6 +38,7 @@ vframes = 2
 frame = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=205394991]
+position = Vector2(31, 0)
 shape = SubResource("CircleShape2D_dxj8f")
 
 [node name="state_machine" parent="." unique_id=1090739556 node_paths=PackedStringArray("initial_state") instance=ExtResource("1_h44e6")]
@@ -39,11 +53,13 @@ speed = 50
 controller = NodePath("../..")
 metadata/_custom_type_script = "uid://tvbromcqoq5n"
 
-[node name="TerryChase" type="Node" parent="state_machine" unique_id=1037312256 node_paths=PackedStringArray("movement_component", "chase_component", "enemy", "controller")]
+[node name="TerryChase" type="Node" parent="state_machine" unique_id=1037312256 node_paths=PackedStringArray("movement_component", "detection_component", "chase_component", "enemy", "hit_box", "controller")]
 script = ExtResource("4_sur7q")
 movement_component = NodePath("../../MovementComponent")
+detection_component = NodePath("../../DetectionComponent")
 chase_component = NodePath("../../ChaseComponent")
 enemy = NodePath("../..")
+hit_box = NodePath("../../HitBox")
 controller = NodePath("../..")
 metadata/_custom_type_script = "uid://btac5a0q5dqqo"
 
@@ -53,10 +69,17 @@ detection_component = NodePath("../../DetectionComponent")
 controller = NodePath("../..")
 metadata/_custom_type_script = "uid://cc2nbnianu6tk"
 
+[node name="TerryAttack" type="Node" parent="state_machine" unique_id=447833708 node_paths=PackedStringArray("movement_component", "animation_player", "controller")]
+script = ExtResource("6_nnw8a")
+movement_component = NodePath("../../MovementComponent")
+animation_player = NodePath("../../AnimationPlayer")
+controller = NodePath("../..")
+metadata/_custom_type_script = "uid://l2uto07qmssu"
+
 [node name="PlayerDetectRay" type="RayCast2D" parent="." unique_id=696409511]
 position = Vector2(1, 1)
-target_position = Vector2(100, 0)
-collision_mask = 2
+target_position = Vector2(400, 0)
+collision_mask = 3
 
 [node name="LedgeDetection" type="RayCast2D" parent="." unique_id=1735628415]
 position = Vector2(36, 1)
@@ -80,3 +103,13 @@ detection_ray = NodePath("../PlayerDetectRay")
 [node name="PathRecalcTimer" type="Timer" parent="." unique_id=726129094]
 wait_time = 0.1
 autostart = true
+
+[node name="HitBox" type="Area2D" parent="." unique_id=963375516]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox" unique_id=704027893]
+shape = SubResource("CircleShape2D_6rais")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1159030513]
+libraries/ = SubResource("AnimationLibrary_1djey")

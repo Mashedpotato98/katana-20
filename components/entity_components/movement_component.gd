@@ -22,6 +22,8 @@ func move(_delta:float):
         else:
                 controller.velocity.x = move_toward(controller.velocity.x, 0.0, decceleration * _delta)
 
+func stop():
+        controller.velocity.x = move_toward(controller.velocity.x, 0.0, decceleration)
 
 func jump(_delta:float):
         if controller.is_on_floor():

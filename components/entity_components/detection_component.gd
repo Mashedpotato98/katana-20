@@ -15,8 +15,9 @@ func can_see() -> bool:
         if not detection_ray.is_colliding():
                 return false
 
-        return detection_ray.get_collider() is Player # evaluates if collider is player. 
+        return detection_ray.get_collider() is Player
 
-func ray_look_at_target():
-        if target_to_be_seen:
-                detection_ray.look_at(target_to_be_seen.global_position)
+func ray_look_at_target(target_pos:Vector2):
+        detection_ray.look_at(target_pos)
+        var target_point = detection_ray.target_position
+        var direction_to_target = get_parent().global_position.direction_to(detection_ray.to_global(target_point))

@@ -19,6 +19,9 @@ size = Vector2(8, 16)
 radius = 16.0
 height = 34.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_2ieo8"]
+radius = 54.33231
+
 [node name="Player" type="CharacterBody2D" unique_id=122802606]
 collision_layer = 2
 script = ExtResource("1_qewde")
@@ -35,13 +38,15 @@ vframes = 2
 [node name="StateMachine" parent="." unique_id=1700750132 node_paths=PackedStringArray("initial_state") instance=ExtResource("4_g6k8r")]
 initial_state = NodePath("PlayerWalk")
 
-[node name="PlayerMelee" type="Node" parent="StateMachine" unique_id=730651810 node_paths=PackedStringArray("move_component", "ray", "melee_timer", "melee_cooldown_timer", "controller")]
+[node name="PlayerMelee" type="Node" parent="StateMachine" unique_id=730651810 node_paths=PackedStringArray("move_component", "melee_area", "melee_collision", "ray", "melee_timer", "melee_cooldown_timer", "controller")]
 script = ExtResource("5_boad6")
 move_component = NodePath("../../components/MovementComponent")
+melee_area = NodePath("../../MeleeCollision")
+melee_collision = NodePath("../../MeleeCollision/CollisionShape2D")
 ray = NodePath("../../ray_collision/MeleeRay")
 melee_timer = NodePath("../../timers/MeleeTimer")
 melee_cooldown_timer = NodePath("../../timers/MeleeCooldownTimer")
-melee_force = 600
+melee_force = 1500
 melee_time = 0.3
 controller = NodePath("../..")
 metadata/_custom_type_script = "uid://cg43kn37v2bf5"
@@ -54,16 +59,19 @@ melee_attack_line = NodePath("../../MeleeAttackLine")
 melee_ray = NodePath("../../ray_collision/MeleeRay")
 melee_charge_bar = NodePath("../../MeleeChargeBar")
 melee_line_colour = Color(0.54901963, 0, 0, 0.4627451)
-melee_ray_length = 450
+melee_ray_length = 300
 controller = NodePath("../..")
 metadata/_custom_type_script = "uid://byybmaoclufuf"
 
-[node name="PlayerWalk" type="Node" parent="StateMachine" unique_id=833571251 node_paths=PackedStringArray("movement_component", "grapple_ray", "melee_cooldown_timer", "grapple_cooldown_timer", "controller")]
+[node name="PlayerWalk" type="Node" parent="StateMachine" unique_id=833571251 node_paths=PackedStringArray("movement_component", "grapple_ray", "melee_cooldown_timer", "grapple_cooldown_timer", "melee_cooldown_bar", "grapple_cooldown_bar", "controller")]
 script = ExtResource("6_rgyib")
 movement_component = NodePath("../../components/MovementComponent")
 grapple_ray = NodePath("../../ray_collision/GrappleRay")
 melee_cooldown_timer = NodePath("../../timers/MeleeCooldownTimer")
 grapple_cooldown_timer = NodePath("../../timers/GrappleCooldownTimer")
+melee_cooldown_bar = NodePath("../../StaticHud/MeleeCooldown")
+grapple_cooldown_bar = NodePath("../../StaticHud/GrappleCooldown")
+jump_velocity = 500.0
 controller = NodePath("../..")
 
 [node name="PlayerGrapple" type="Node" parent="StateMachine" unique_id=2054666218 node_paths=PackedStringArray("move_component", "grapple_ray", "grapple_collision_check_area", "grapple_cooldown_timer", "melee_attack_line", "controller")]
@@ -73,7 +81,7 @@ grapple_ray = NodePath("../../ray_collision/GrappleRay")
 grapple_collision_check_area = NodePath("../../ray_collision/GrappleCollisionCheck")
 grapple_cooldown_timer = NodePath("../../timers/GrappleCooldownTimer")
 melee_attack_line = NodePath("../../MeleeAttackLine")
-grapple_pull_force = 400
+grapple_pull_force = 700
 grapple_ray_length = 500
 controller = NodePath("../..")
 metadata/_custom_type_script = "uid://3wwld143mnwm"
@@ -86,9 +94,18 @@ collision_mask = 4
 [node name="GrappleRay" type="RayCast2D" parent="ray_collision" unique_id=1846430602]
 
 [node name="GrappleCollisionCheck" type="Area2D" parent="ray_collision" unique_id=629304948]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ray_collision/GrappleCollisionCheck" unique_id=1267760982]
 shape = SubResource("CapsuleShape2D_rgyib")
+
+[node name="MeleeCollision" type="Area2D" parent="." unique_id=34126781]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MeleeCollision" unique_id=1839111718]
+shape = SubResource("CircleShape2D_2ieo8")
+disabled = true
 
 [node name="timers" type="Node" parent="." unique_id=710328846]
 
@@ -125,10 +142,31 @@ default_color = Color(1, 1, 0.28627452, 0.3372549)
 
 [node name="CrossHair" type="Sprite2D" parent="." unique_id=1539216639]
 unique_name_in_owner = true
+modulate = Color(18.892, 18.892, 18.892, 1)
+top_level = true
 position = Vector2(0, 1)
+scale = Vector2(3, 3)
 texture = ExtResource("3_yhrs4")
 
 [node name="StaticHud" type="CanvasLayer" parent="." unique_id=998906162]
+
+[node name="MeleeCooldown" type="ProgressBar" parent="StaticHud" unique_id=1565632481]
+modulate = Color(1, 0.22745098, 1, 1)
+offset_left = 4.0
+offset_top = 16.0
+offset_right = 344.0
+offset_bottom = 80.0
+fill_mode = 1
+show_percentage = false
+
+[node name="GrappleCooldown" type="ProgressBar" parent="StaticHud" unique_id=1801145916]
+modulate = Color(1, 0.6725772, 0.9865646, 1)
+offset_left = 4.0
+offset_top = 88.0
+offset_right = 341.0
+offset_bottom = 166.0
+fill_mode = 1
+show_percentage = false
 
 [node name="MeleeChargeBar" type="TextureProgressBar" parent="." unique_id=739482752]
 visible = false

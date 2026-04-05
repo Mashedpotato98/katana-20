@@ -19,11 +19,8 @@ func setup() -> void:
 func get_direction_to_target():
         #if navigation_agent.navigation_finished:
                 #return
-        
-        if target:
-                       var next_path_position:Vector2 = navigation_agent.get_next_path_position()
-                       
-                       direction_to_target =  controller.global_position.direction_to(next_path_position)
+        var next_path_position:Vector2 = navigation_agent.get_next_path_position()
+        direction_to_target =  controller.global_position.direction_to(next_path_position)
 
 func set_target_position(target_pos:Vector2):
         navigation_agent.target_position = target_pos
