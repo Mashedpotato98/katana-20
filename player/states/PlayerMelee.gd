@@ -10,11 +10,12 @@ class_name PlayerMelee extends state
 @export var melee_force:int = 1
 @export var melee_time:float = 1
 
-func _ready() -> void:
-        melee_timer.timeout.connect(_on_melee_timer_timeout)
-        melee_area.body_entered.connect(_on_melee_body_entered)
 
 func Enter():
+        if !melee_timer.timeout.is_connected(_on_melee_timer_timeout):
+                melee_timer.timeout.connect(_on_melee_timer_timeout)
+        if !melee_area.body_entered.is_connected(_on_melee_body_entered):
+                melee_area.body_entered.connect(_on_melee_body_entered)
         melee_collision.disabled = false
         melee_timer.start(melee_time)
 

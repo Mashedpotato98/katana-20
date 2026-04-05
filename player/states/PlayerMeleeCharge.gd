@@ -34,7 +34,7 @@ func physics_update(_delta:float):
         melee_charge_bar.value += 1
 
 func charge():
-        if Input.is_action_just_released("melee"):
+        if Input.is_action_just_released(&"melee"):
                 Transitioned.emit(self, &"playerMelee")
 
 func enable_melee_line():

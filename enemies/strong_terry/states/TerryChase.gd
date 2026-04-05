@@ -1,7 +1,7 @@
 class_name TerryChase extends state
 
 @export var movement_component:MovementComponent
-@export var detection_component:DetectionComponent
+@export var ray_component:RayComponent
 @export var chase_component:ChaseComponent
 @export var enemy:CharacterBody2D
 @export var hit_box:Area2D

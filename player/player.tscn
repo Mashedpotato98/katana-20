@@ -11,6 +11,7 @@
 [ext_resource type="Script" uid="uid://dytk7ldtxvwp3" path="res://components/entity_components/movement_component.gd" id="8_hg6s5"]
 [ext_resource type="Script" uid="uid://3wwld143mnwm" path="res://player/states/PlayerGrapple.gd" id="8_rgyib"]
 [ext_resource type="Texture2D" uid="uid://bri7cmfffj5bv" path="res://assets/New Piskel-2.png.png" id="9_8t03j"]
+[ext_resource type="Script" uid="uid://div1lsxq0smqe" path="res://components/entity_components/ray_component.gd" id="12_ebec5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cvqs2"]
 size = Vector2(8, 16)
@@ -63,9 +64,10 @@ melee_ray_length = 300
 controller = NodePath("../..")
 metadata/_custom_type_script = "uid://byybmaoclufuf"
 
-[node name="PlayerWalk" type="Node" parent="StateMachine" unique_id=833571251 node_paths=PackedStringArray("movement_component", "grapple_ray", "melee_cooldown_timer", "grapple_cooldown_timer", "melee_cooldown_bar", "grapple_cooldown_bar", "controller")]
+[node name="PlayerWalk" type="Node" parent="StateMachine" unique_id=833571251 node_paths=PackedStringArray("movement_component", "ray_component", "grapple_ray", "melee_cooldown_timer", "grapple_cooldown_timer", "melee_cooldown_bar", "grapple_cooldown_bar", "controller")]
 script = ExtResource("6_rgyib")
 movement_component = NodePath("../../components/MovementComponent")
+ray_component = NodePath("../../components/RayComponent")
 grapple_ray = NodePath("../../ray_collision/GrappleRay")
 melee_cooldown_timer = NodePath("../../timers/MeleeCooldownTimer")
 grapple_cooldown_timer = NodePath("../../timers/GrappleCooldownTimer")
@@ -74,9 +76,10 @@ grapple_cooldown_bar = NodePath("../../StaticHud/GrappleCooldown")
 jump_velocity = 500.0
 controller = NodePath("../..")
 
-[node name="PlayerGrapple" type="Node" parent="StateMachine" unique_id=2054666218 node_paths=PackedStringArray("move_component", "grapple_ray", "grapple_collision_check_area", "grapple_cooldown_timer", "melee_attack_line", "controller")]
+[node name="PlayerGrapple" type="Node" parent="StateMachine" unique_id=2054666218 node_paths=PackedStringArray("move_component", "ray_component", "grapple_ray", "grapple_collision_check_area", "grapple_cooldown_timer", "melee_attack_line", "controller")]
 script = ExtResource("8_rgyib")
 move_component = NodePath("../../components/MovementComponent")
+ray_component = NodePath("../../components/RayComponent")
 grapple_ray = NodePath("../../ray_collision/GrappleRay")
 grapple_collision_check_area = NodePath("../../ray_collision/GrappleCollisionCheck")
 grapple_cooldown_timer = NodePath("../../timers/GrappleCooldownTimer")
@@ -92,6 +95,7 @@ metadata/_custom_type_script = "uid://3wwld143mnwm"
 collision_mask = 4
 
 [node name="GrappleRay" type="RayCast2D" parent="ray_collision" unique_id=1846430602]
+target_position = Vector2(500, 0)
 
 [node name="GrappleCollisionCheck" type="Area2D" parent="ray_collision" unique_id=629304948]
 visible = false
@@ -185,6 +189,11 @@ texture_progress = ExtResource("8_8t03j")
 script = ExtResource("8_hg6s5")
 controller = NodePath("../..")
 metadata/_custom_type_script = "uid://dytk7ldtxvwp3"
+
+[node name="RayComponent" type="Node" parent="components" unique_id=1531507290 node_paths=PackedStringArray("controller")]
+script = ExtResource("12_ebec5")
+controller = NodePath("../..")
+metadata/_custom_type_script = "uid://div1lsxq0smqe"
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=258004067]
 zoom = Vector2(0.5, 0.5)

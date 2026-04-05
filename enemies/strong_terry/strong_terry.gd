@@ -4,4 +4,3 @@ extends Entity
 
 func _ready() -> void:
         $ChaseComponent.target = target
-        $DetectionComponent.target_to_be_seen = target

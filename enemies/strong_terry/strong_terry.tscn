@@ -7,7 +7,7 @@
 [ext_resource type="Script" uid="uid://cc2nbnianu6tk" path="res://enemies/strong_terry/states/terry_idle.gd" id="5_6rais"]
 [ext_resource type="Script" uid="uid://bqgg71jjohn1t" path="res://components/entity_components/chase_component.gd" id="6_ikt82"]
 [ext_resource type="Script" uid="uid://l2uto07qmssu" path="res://enemies/strong_terry/states/terry_attack.gd" id="6_nnw8a"]
-[ext_resource type="Script" uid="uid://div1lsxq0smqe" path="res://components/entity_components/detection_component.gd" id="7_6rais"]
+[ext_resource type="Script" uid="uid://div1lsxq0smqe" path="res://components/entity_components/ray_component.gd" id="7_6rais"]
 [ext_resource type="Script" uid="uid://dytk7ldtxvwp3" path="res://components/entity_components/movement_component.gd" id="7_ugrix"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ikt82"]
@@ -53,19 +53,20 @@ speed = 50
 controller = NodePath("../..")
 metadata/_custom_type_script = "uid://tvbromcqoq5n"
 
-[node name="TerryChase" type="Node" parent="state_machine" unique_id=1037312256 node_paths=PackedStringArray("movement_component", "detection_component", "chase_component", "enemy", "hit_box", "controller")]
+[node name="TerryChase" type="Node" parent="state_machine" unique_id=1037312256 node_paths=PackedStringArray("movement_component", "ray_component", "chase_component", "enemy", "hit_box", "controller")]
 script = ExtResource("4_sur7q")
 movement_component = NodePath("../../MovementComponent")
-detection_component = NodePath("../../DetectionComponent")
+ray_component = NodePath("../../RayComponent")
 chase_component = NodePath("../../ChaseComponent")
 enemy = NodePath("../..")
 hit_box = NodePath("../../HitBox")
 controller = NodePath("../..")
 metadata/_custom_type_script = "uid://btac5a0q5dqqo"
 
-[node name="TerryIdle" type="Node" parent="state_machine" unique_id=1401757320 node_paths=PackedStringArray("detection_component", "controller")]
+[node name="TerryIdle" type="Node" parent="state_machine" unique_id=1401757320 node_paths=PackedStringArray("ray_component", "player_detect_ray", "controller")]
 script = ExtResource("5_6rais")
-detection_component = NodePath("../../DetectionComponent")
+ray_component = NodePath("../../RayComponent")
+player_detect_ray = NodePath("../../PlayerDetectRay")
 controller = NodePath("../..")
 metadata/_custom_type_script = "uid://cc2nbnianu6tk"
 
@@ -94,9 +95,9 @@ path_calc_timer = NodePath("../PathRecalcTimer")
 script = ExtResource("7_ugrix")
 controller = NodePath("..")
 
-[node name="DetectionComponent" type="Node" parent="." unique_id=71919466 node_paths=PackedStringArray("detection_ray")]
+[node name="RayComponent" type="Node" parent="." unique_id=71919466 node_paths=PackedStringArray("controller")]
 script = ExtResource("7_6rais")
-detection_ray = NodePath("../PlayerDetectRay")
+controller = NodePath("..")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=1749117317]
 
