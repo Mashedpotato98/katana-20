@@ -8,7 +8,7 @@ Coding:
     but I have no idea
 
   enemies: 
-    > The strong terry attack state. Terry will get close the player and attack
+    > (Y, a basic version has been done. Problem is the area for detecting whetehr the player is close and the hit-box is the same) The strong terry attack state. Terry will get close the player and attack
 
 level:    
   > A proper level 

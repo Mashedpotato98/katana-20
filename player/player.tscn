@@ -39,12 +39,13 @@ vframes = 2
 [node name="StateMachine" parent="." unique_id=1700750132 node_paths=PackedStringArray("initial_state") instance=ExtResource("4_g6k8r")]
 initial_state = NodePath("PlayerWalk")
 
-[node name="PlayerMelee" type="Node" parent="StateMachine" unique_id=730651810 node_paths=PackedStringArray("move_component", "melee_area", "melee_collision", "ray", "melee_timer", "melee_cooldown_timer", "controller")]
+[node name="PlayerMelee" type="Node" parent="StateMachine" unique_id=730651810 node_paths=PackedStringArray("move_component", "ray_component", "melee_area", "melee_collision", "melee_ray", "melee_timer", "melee_cooldown_timer", "controller")]
 script = ExtResource("5_boad6")
 move_component = NodePath("../../components/MovementComponent")
+ray_component = NodePath("../../components/RayComponent")
 melee_area = NodePath("../../MeleeCollision")
 melee_collision = NodePath("../../MeleeCollision/CollisionShape2D")
-ray = NodePath("../../ray_collision/MeleeRay")
+melee_ray = NodePath("../../ray_collision/MeleeRay")
 melee_timer = NodePath("../../timers/MeleeTimer")
 melee_cooldown_timer = NodePath("../../timers/MeleeCooldownTimer")
 melee_force = 1500
@@ -52,12 +53,13 @@ melee_time = 0.3
 controller = NodePath("../..")
 metadata/_custom_type_script = "uid://cg43kn37v2bf5"
 
-[node name="playerMeleeCharge" type="Node" parent="StateMachine" unique_id=1605380042 node_paths=PackedStringArray("charge_timer", "melee_cooldown_timer", "melee_attack_line", "melee_ray", "melee_charge_bar", "controller")]
+[node name="playerMeleeCharge" type="Node" parent="StateMachine" unique_id=1605380042 node_paths=PackedStringArray("charge_timer", "melee_cooldown_timer", "melee_ray", "ray_component", "melee_attack_line", "melee_charge_bar", "controller")]
 script = ExtResource("7_boad6")
 charge_timer = NodePath("../../timers/MeleeChargeTimer")
 melee_cooldown_timer = NodePath("../../timers/MeleeCooldownTimer")
-melee_attack_line = NodePath("../../MeleeAttackLine")
 melee_ray = NodePath("../../ray_collision/MeleeRay")
+ray_component = NodePath("../../components/RayComponent")
+melee_attack_line = NodePath("../../MeleeAttackLine")
 melee_charge_bar = NodePath("../../MeleeChargeBar")
 melee_line_colour = Color(0.54901963, 0, 0, 0.4627451)
 melee_ray_length = 300

@@ -1,4 +1,4 @@
-extends Node2D
+class_name StateMachine extends Node2D
 
 @export var initial_state:state
 
@@ -28,9 +28,9 @@ func on_child_transition(state,new_state_name):
                                 return
 
                 var new_state = states.get(new_state_name.to_lower())
-                
-                if !new_state:
-                                return
+                assert(new_state)
+                #if !new_state:
+                                #return
 
                 if current_state:
                                 current_state.Exit()
