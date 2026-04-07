@@ -68,7 +68,7 @@ _data = {
 &"attack": SubResource("Animation_nnw8a")
 }
 
-[node name="strong_terry" type="CharacterBody2D" unique_id=1255156356 groups=["entity"]]
+[node name="StrongTerry" type="CharacterBody2D" unique_id=1255156356 groups=["entity"]]
 collision_layer = 4
 collision_mask = 5
 script = ExtResource("1_tdqff")
@@ -86,11 +86,10 @@ shape = SubResource("CircleShape2D_dxj8f")
 [node name="state_machine" parent="." unique_id=1090739556 node_paths=PackedStringArray("initial_state") instance=ExtResource("1_h44e6")]
 initial_state = NodePath("TerryIdle")
 
-[node name="TerryWander" type="Node" parent="state_machine" unique_id=998684818 node_paths=PackedStringArray("enemy", "wallDetect", "ledgeDetection", "controller")]
+[node name="TerryWander" type="Node" parent="state_machine" unique_id=998684818 node_paths=PackedStringArray("enemy", "wallDetect", "controller")]
 script = ExtResource("2_4cnyu")
 enemy = NodePath("../..")
 wallDetect = NodePath("../../PlayerDetectRay")
-ledgeDetection = NodePath("")
 speed = 50
 controller = NodePath("../..")
 metadata/_custom_type_script = "uid://tvbromcqoq5n"

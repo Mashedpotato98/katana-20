@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://qdo7qp3qn4be"]
+
+[ext_resource type="PackedScene" uid="uid://dywu2dvqyksya" path="res://levels/tiles/Tiles.tscn" id="1_mi4ay"]
+
+[node name="Level2" type="Node2D" unique_id=395672836]
+
+[node name="Tiles" parent="." unique_id=1294046947 instance=ExtResource("1_mi4ay")]

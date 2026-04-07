@@ -14,13 +14,6 @@ class_name PlayerWalk extends state
 const deceleration:float = 700
 const acceleration:float = 500
 
-func _ready() -> void:
-        if !melee_cooldown_timer.timeout.is_connected(_on_melee_cooldown_timer_timeout):
-                melee_cooldown_timer.timeout.connect(_on_melee_cooldown_timer_timeout)
-        if !grapple_cooldown_timer.timeout.is_connected(_on_grapple_cooldown_timer_timeout):
-                grapple_cooldown_timer.timeout.connect(_on_grapple_cooldown_timer_timeout)
-
-
 func Enter() -> void:
         if !melee_cooldown_timer.timeout.is_connected(_on_melee_cooldown_timer_timeout):
                 melee_cooldown_timer.timeout.connect(_on_melee_cooldown_timer_timeout)

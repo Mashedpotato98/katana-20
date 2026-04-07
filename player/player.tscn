@@ -23,6 +23,14 @@ height = 34.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_2ieo8"]
 radius = 54.33231
 
+[sub_resource type="Animation" id="Animation_ebec5"]
+resource_name = "melee"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yllr7"]
+_data = {
+&"melee": SubResource("Animation_ebec5")
+}
+
 [node name="Player" type="CharacterBody2D" unique_id=122802606]
 collision_layer = 2
 script = ExtResource("1_qewde")
@@ -199,3 +207,6 @@ metadata/_custom_type_script = "uid://div1lsxq0smqe"
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=258004067]
 zoom = Vector2(0.5, 0.5)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=812038682]
+libraries/ = SubResource("AnimationLibrary_yllr7")

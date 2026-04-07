@@ -1,6 +1,5 @@
 class_name PlayerMeleeCharge extends state
 
-
 @export var charge_timer:Timer 
 @export var melee_cooldown_timer:Timer
 
@@ -18,52 +17,58 @@ var max_charge_time:int = 30
 func _ready() -> void:
         melee_attack_line.default_color = melee_line_colour
         melee_charge_bar.max_value = max_charge_time * 6 # magic number go boo. maybe it works because 60 frames per second?
-        melee_ray.target_position = Vector2(melee_ray_length, 0.0)
+
+        melee_attack_line.add_point(Vector2(0,0))
+        melee_attack_line.add_point(Vector2(0,0))
 
 func Enter():
-        if !charge_timer.timeout.connect(_on_melee_charge_timer_timeout):
+        if !charge_timer.timeout.is_connected(_on_melee_charge_timer_timeout):
+                print(charge_timer.timeout.get_connections())
                 charge_timer.timeout.connect(_on_melee_charge_timer_timeout)
-        enable_melee_line()
-        charge_timer.start(max_charge_time / 10)
-        melee_charge_bar.visible = true
+        enable_hud()
 
 func physics_update(_delta:float):
         controller.velocity = Vector2.ZERO
 
-        ray_component.ray_look_at_target(melee_ray, controller.get_global_mouse_position())
-        charge()
-        update_melee_line()
-        melee_charge_bar.value += 1
+        charge_mechanics()
+        update_hud()
 
-func charge():
+func charge_mechanics():
+        ray_component.ray_look_at_target(melee_ray, controller.get_global_mouse_position())
         if Input.is_action_just_released(&"melee"):
                 Transitioned.emit(self, &"playerMelee")
 
-
 #region melee_visuals
-func enable_melee_line():
-        melee_attack_line.add_point(Vector2(0,0))
-        melee_attack_line.add_point(Vector2(0,0))
+func enable_hud():
+        melee_charge_bar.value = 0 #0 is rhe default value 
+        melee_charge_bar.visible = true
+        charge_timer.start(max_charge_time / 10)
+
         melee_attack_line.visible = true
+        melee_ray.target_position.y = melee_ray_length
+
 func disable_melee_line():
         melee_attack_line.set_point_position(1, Vector2(0,0))
         melee_attack_line.set_point_position(1, Vector2(0,0))
         melee_attack_line.visible = false
 
-func update_melee_line():
+        melee_charge_bar.visible = false
+
+func update_hud():
         var pos:Vector2 = ray_component.direction_to_target * melee_ray_length # human concession in afallen world 
         melee_attack_line.set_point_position(0, melee_attack_line.to_local(controller.global_position))
         melee_attack_line.set_point_position(1, pos)
+
+        melee_charge_bar.value += 1
 #endregion
 
 func Exit():
         charge_timer.stop()
         charge_timer.timeout.disconnect(_on_melee_charge_timer_timeout)
         disable_melee_line()
-        melee_charge_bar.visible = false
+        melee_cooldown_timer.start(controller.melee_cooldown_time) #This timer will be used in plyr_walk
 
 func _on_melee_charge_timer_timeout() -> void:
-        melee_cooldown_timer.start(controller.melee_cooldown_time)
         Transitioned.emit(self, &"playerWalk")
 
 func check_ray_colliders(): # I dont think this is in use
