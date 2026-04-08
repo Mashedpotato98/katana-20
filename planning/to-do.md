@@ -5,6 +5,8 @@ Coding:
     better with checks for current state
     > The mess of variable assignment in the state machine. Dependancy injection might help
     but I have no idea
+    > Experiment with using a tween for the melee charge instead of physically moving the player using its velocity
+    > Stopping the player before hitting a wall during the charge attack. Or doing something else that does not reduce the fun when acidentally hitting walls during the melee attack
 
   enemies: 
     > (D, a basic version has been done. Problem is the area for detecting whetehr the player is close and the hit-box is the same) The strong terry attack state. Terry will get close the player and attack
