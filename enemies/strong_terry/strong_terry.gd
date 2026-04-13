@@ -1,4 +1,4 @@
-extends Entity
+class_name StrongTerry extends Entity
 
 @export var target:Player
 

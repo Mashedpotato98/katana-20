@@ -17,8 +17,8 @@
 size = Vector2(8, 16)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rgyib"]
-radius = 16.0
-height = 34.0
+radius = 48.0
+height = 96.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2ieo8"]
 radius = 54.33231
@@ -47,17 +47,16 @@ vframes = 2
 [node name="StateMachine" parent="." unique_id=1700750132 node_paths=PackedStringArray("initial_state") instance=ExtResource("4_g6k8r")]
 initial_state = NodePath("PlayerWalk")
 
-[node name="PlayerMelee" type="Node" parent="StateMachine" unique_id=730651810 node_paths=PackedStringArray("move_component", "ray_component", "melee_area", "melee_collision", "melee_ray", "melee_timer", "melee_cooldown_timer", "controller")]
+[node name="PlayerMelee" type="Node" parent="StateMachine" unique_id=730651810 node_paths=PackedStringArray("move_component", "ray_component", "melee_area", "wall_collision", "melee_collision", "melee_ray", "melee_timer", "melee_cooldown_timer", "controller")]
 script = ExtResource("5_boad6")
 move_component = NodePath("../../components/MovementComponent")
 ray_component = NodePath("../../components/RayComponent")
 melee_area = NodePath("../../MeleeCollision")
+wall_collision = NodePath("../../ray_collision/WallCollisionCheck")
 melee_collision = NodePath("../../MeleeCollision/CollisionShape2D")
 melee_ray = NodePath("../../ray_collision/MeleeRay")
 melee_timer = NodePath("../../timers/MeleeTimer")
 melee_cooldown_timer = NodePath("../../timers/MeleeCooldownTimer")
-melee_force = 1500
-melee_time = 0.3
 controller = NodePath("../..")
 metadata/_custom_type_script = "uid://cg43kn37v2bf5"
 
@@ -70,7 +69,6 @@ ray_component = NodePath("../../components/RayComponent")
 melee_attack_line = NodePath("../../MeleeAttackLine")
 melee_charge_bar = NodePath("../../MeleeChargeBar")
 melee_line_colour = Color(0.54901963, 0, 0, 0.4627451)
-melee_ray_length = 300
 controller = NodePath("../..")
 metadata/_custom_type_script = "uid://byybmaoclufuf"
 
@@ -91,7 +89,7 @@ script = ExtResource("8_rgyib")
 move_component = NodePath("../../components/MovementComponent")
 ray_component = NodePath("../../components/RayComponent")
 grapple_ray = NodePath("../../ray_collision/GrappleRay")
-grapple_collision_check_area = NodePath("../../ray_collision/GrappleCollisionCheck")
+grapple_collision_check_area = NodePath("../../ray_collision/WallCollisionCheck")
 grapple_cooldown_timer = NodePath("../../timers/GrappleCooldownTimer")
 melee_attack_line = NodePath("../../MeleeAttackLine")
 grapple_pull_force = 700
@@ -102,15 +100,15 @@ metadata/_custom_type_script = "uid://3wwld143mnwm"
 [node name="ray_collision" type="Node2D" parent="." unique_id=567367477]
 
 [node name="MeleeRay" type="RayCast2D" parent="ray_collision" unique_id=636177797]
+target_position = Vector2(300, 0)
 collision_mask = 4
 
 [node name="GrappleRay" type="RayCast2D" parent="ray_collision" unique_id=1846430602]
 target_position = Vector2(500, 0)
 
-[node name="GrappleCollisionCheck" type="Area2D" parent="ray_collision" unique_id=629304948]
-visible = false
+[node name="WallCollisionCheck" type="Area2D" parent="ray_collision" unique_id=629304948]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ray_collision/GrappleCollisionCheck" unique_id=1267760982]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ray_collision/WallCollisionCheck" unique_id=1267760982]
 shape = SubResource("CapsuleShape2D_rgyib")
 
 [node name="MeleeCollision" type="Area2D" parent="." unique_id=34126781]
@@ -125,15 +123,19 @@ disabled = true
 
 [node name="MeleeChargeTimer" type="Timer" parent="timers" unique_id=152960758]
 one_shot = true
+ignore_time_scale = true
 
 [node name="MeleeCooldownTimer" type="Timer" parent="timers" unique_id=1189284988]
 one_shot = true
+ignore_time_scale = true
 
 [node name="MeleeTimer" type="Timer" parent="timers" unique_id=16465016]
 one_shot = true
+ignore_time_scale = true
 
 [node name="GrappleCooldownTimer" type="Timer" parent="timers" unique_id=1974267601]
 one_shot = true
+ignore_time_scale = true
 
 [node name="test_misc" type="Node" parent="." unique_id=202414180]
 
@@ -152,7 +154,7 @@ offset_right = 7.0
 offset_bottom = -1.0
 
 [node name="MeleeAttackLine" type="Line2D" parent="." unique_id=137495192]
-default_color = Color(1, 1, 0.28627452, 0.3372549)
+default_color = Color(1, 0.3372549, 1, 1)
 
 [node name="CrossHair" type="Sprite2D" parent="." unique_id=1539216639]
 unique_name_in_owner = true
@@ -210,3 +212,7 @@ zoom = Vector2(0.5, 0.5)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=812038682]
 libraries/ = SubResource("AnimationLibrary_yllr7")
+
+[node name="test" type="Sprite2D" parent="." unique_id=1066851958]
+unique_name_in_owner = true
+texture = ExtResource("8_8t03j")

@@ -22,12 +22,14 @@ func move(_delta:float):
         else:
                 controller.velocity.x = move_toward(controller.velocity.x, 0.0, decceleration * _delta)
 
-func stop():
-        controller.velocity.x = move_toward(controller.velocity.x, 0.0, decceleration)
+func stop():# Not in use for now 
+        controller.velocity = controller.velocity.move_toward(Vector2.ZERO, decceleration)
 
 func jump(_delta:float):
         if controller.is_on_floor():
                 controller.velocity.y -= jump_force 
 
 func push(dir:Vector2, force:float):
+        #movement_direction = Vector2.ZERO
         controller.velocity = dir * force
+        #print("daw: " + str(dir * force), "vel:" + str(controller.velocity))

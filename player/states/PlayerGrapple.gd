@@ -28,5 +28,5 @@ func _grapple_collision_body_entered(body:Node2D):
                 Transitioned.emit(self, &"PlayerWalk")
 
 func Exit():
-        grapple_cooldown_timer.start(controller.grapple_cooldown_time)
+        grapple_cooldown_timer.start()
         grapple_collision_check_area.body_entered.disconnect(_grapple_collision_body_entered)

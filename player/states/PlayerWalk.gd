@@ -26,8 +26,8 @@ func Enter() -> void:
         movement_component.jump_force = jump_velocity
 
         %CrossHair.visible = true
-        melee_cooldown_bar.max_value = controller.melee_cooldown_time
-        grapple_cooldown_bar.max_value = controller.grapple_cooldown_time
+        melee_cooldown_bar.max_value = melee_cooldown_timer.wait_time
+        grapple_cooldown_bar.max_value = grapple_cooldown_timer.wait_time
 
 func physics_update(_delta:float):
                 #%CanGrappleLabel.text = "grapple" + str(can_grapple)
