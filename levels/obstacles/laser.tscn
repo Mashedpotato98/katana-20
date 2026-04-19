@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://b0aq280dtkihp"]
+
+[ext_resource type="PackedScene" uid="uid://wgmpcc0jmdm1" path="res://components/health/HitboxComponent.tscn" id="1_fw1t6"]
+[ext_resource type="Texture2D" uid="uid://7lymrpbeqx73" path="res://assets/spritesheet.png" id="2_t814o"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t814o"]
+size = Vector2(20, 79)
+
+[node name="Laser" unique_id=2001351007 instance=ExtResource("1_fw1t6")]
+collision_mask = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="." index="0" unique_id=919284059]
+texture = ExtResource("2_t814o")
+region_enabled = true
+region_rect = Rect2(32, 32, 32, 96)
+
+[node name="CollisionShape2D" parent="." index="1" unique_id=802409281]
+shape = SubResource("RectangleShape2D_t814o")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
