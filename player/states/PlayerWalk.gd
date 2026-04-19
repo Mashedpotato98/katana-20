@@ -8,11 +8,11 @@ class_name PlayerWalk extends state
 @export var melee_cooldown_bar:ProgressBar
 @export var grapple_cooldown_bar:ProgressBar
 
-@export var max_speed:float = 300.0
-@export var jump_velocity:float = 400.0
+@export var max_speed:int = 300.0
+@export var jump_velocity:int = 400.0
 
-const deceleration:float = 700
-const acceleration:float = 500
+const deceleration:int = 700
+const acceleration:int = 500
 
 func Enter() -> void:
         if !melee_cooldown_timer.timeout.is_connected(_on_melee_cooldown_timer_timeout):
@@ -80,7 +80,9 @@ func Exit():
         %CrossHair.visible = false
 
 func _on_melee_cooldown_timer_timeout() -> void:
-        print("melee cooldown timer time, player_walk.gd")
+        pass
+        #print("melee cooldown timer time, player_walk.gd")
 
 func _on_grapple_cooldown_timer_timeout():
-        print("grapple cooldown timer time, player_walk.gd")
+        pass
+        #print("grapple cooldown timer time, player_walk.gd")

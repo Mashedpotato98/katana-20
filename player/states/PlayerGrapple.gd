@@ -24,7 +24,7 @@ func pull_player():
 
 func _grapple_collision_body_entered(body:Node2D):
         if get_parent().current_state == self:
-                print("Body entered, player_graple.gd")
+                #print("Body entered, player_graple.gd")
                 Transitioned.emit(self, &"PlayerWalk")
 
 func Exit():

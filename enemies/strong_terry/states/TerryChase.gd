@@ -19,7 +19,7 @@ func Enter() -> void:
         movement_component.decceleration = deacceleration
 
         if !hit_box.body_entered.is_connected(_player_close):
-                print("YO, terry_chase.gd")
+                #print("YO, terry_chase.gd")
                 hit_box.body_entered.connect(_player_close)
 
 func physics_update(_delta:float):

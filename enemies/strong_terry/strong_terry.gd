@@ -4,3 +4,6 @@ class_name StrongTerry extends Entity
 
 func _ready() -> void:
         $ChaseComponent.target = target
+
+func die():
+        queue_free()

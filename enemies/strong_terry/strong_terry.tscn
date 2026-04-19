@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://l2uto07qmssu" path="res://enemies/strong_terry/states/terry_attack.gd" id="6_nnw8a"]
 [ext_resource type="Script" uid="uid://div1lsxq0smqe" path="res://components/entity_components/ray_component.gd" id="7_6rais"]
 [ext_resource type="Script" uid="uid://dytk7ldtxvwp3" path="res://components/entity_components/movement_component.gd" id="7_ugrix"]
+[ext_resource type="PackedScene" uid="uid://3ugllot0etsu" path="res://components/health/hurtbox_component.tscn" id="10_1djey"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ikt82"]
 load_path = "res://.godot/imported/spritesheet.png-76e0b916bc20d45ac6900db6e21d8a9e.ctex"
@@ -18,6 +19,9 @@ radius = 16.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6rais"]
 radius = 35.014282
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1djey"]
+radius = 12.0
 
 [sub_resource type="Animation" id="Animation_1djey"]
 length = 0.001
@@ -75,8 +79,8 @@ script = ExtResource("1_tdqff")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=2121497507]
 texture = SubResource("CompressedTexture2D_ikt82")
-hframes = 2
-vframes = 2
+hframes = 4
+vframes = 4
 frame = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=205394991]
@@ -152,5 +156,13 @@ collision_mask = 2
 position = Vector2(0, -2)
 shape = SubResource("CircleShape2D_6rais")
 
+[node name="HurtboxComponent" parent="." unique_id=627330934 instance=ExtResource("10_1djey")]
+collision_layer = 4
+
+[node name="CollisionShape2D" parent="HurtboxComponent" index="0" unique_id=2088561250]
+shape = SubResource("CircleShape2D_1djey")
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1159030513]
 libraries/ = SubResource("AnimationLibrary_1djey")
+
+[editable path="HurtboxComponent"]

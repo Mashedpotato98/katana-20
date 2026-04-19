@@ -25,7 +25,7 @@ func _ready() -> void:
 
 func Enter():
         if !charge_timer.timeout.is_connected(_on_melee_charge_timer_timeout):
-                print(charge_timer.timeout.get_connections())
+                #print(charge_timer.timeout.get_connections() + ", melee_Chgarge.gd")
                 charge_timer.timeout.connect(_on_melee_charge_timer_timeout)
         enable_hud()
         change_game_speed(0.1)
@@ -46,9 +46,7 @@ func physics_update(_delta:float):
         update_hud()
 
 func charge_mechanics():
-        ray_component.is_collding(melee_ray)
         ray_component.ray_look_at_target(melee_ray, controller.get_global_mouse_position())
-        %test.global_position = (ray_component.colliding_at_point)
         if Input.is_action_just_released(&"melee"):
                 Transitioned.emit(self, &"playerMelee")
 

@@ -12,13 +12,14 @@
 [ext_resource type="Script" uid="uid://3wwld143mnwm" path="res://player/states/PlayerGrapple.gd" id="8_rgyib"]
 [ext_resource type="Texture2D" uid="uid://bri7cmfffj5bv" path="res://assets/New Piskel-2.png.png" id="9_8t03j"]
 [ext_resource type="Script" uid="uid://div1lsxq0smqe" path="res://components/entity_components/ray_component.gd" id="12_ebec5"]
+[ext_resource type="PackedScene" uid="uid://3ugllot0etsu" path="res://components/health/hurtbox_component.tscn" id="13_yllr7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cvqs2"]
 size = Vector2(8, 16)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rgyib"]
-radius = 48.0
-height = 96.0
+radius = 27.0
+height = 58.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2ieo8"]
 radius = 54.33231
@@ -31,29 +32,34 @@ _data = {
 &"melee": SubResource("Animation_ebec5")
 }
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_yllr7"]
+radius = 25.179358
+
 [node name="Player" type="CharacterBody2D" unique_id=122802606]
 collision_layer = 2
 script = ExtResource("1_qewde")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=632126902]
+visible = false
 position = Vector2(-1, 0)
 shape = SubResource("RectangleShape2D_cvqs2")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=8514591]
 texture = ExtResource("2_2ieo8")
-hframes = 2
-vframes = 2
+hframes = 4
+vframes = 4
 
 [node name="StateMachine" parent="." unique_id=1700750132 node_paths=PackedStringArray("initial_state") instance=ExtResource("4_g6k8r")]
 initial_state = NodePath("PlayerWalk")
 
-[node name="PlayerMelee" type="Node" parent="StateMachine" unique_id=730651810 node_paths=PackedStringArray("move_component", "ray_component", "melee_area", "wall_collision", "melee_collision", "melee_ray", "melee_timer", "melee_cooldown_timer", "controller")]
+[node name="PlayerMelee" type="Node" parent="StateMachine" unique_id=730651810 node_paths=PackedStringArray("move_component", "ray_component", "melee_area", "wall_collision", "melee_collision", "hurtbox_component_area", "melee_ray", "melee_timer", "melee_cooldown_timer", "controller")]
 script = ExtResource("5_boad6")
 move_component = NodePath("../../components/MovementComponent")
 ray_component = NodePath("../../components/RayComponent")
-melee_area = NodePath("../../MeleeCollision")
+melee_area = NodePath("../../ray_collision/MeleeCollision")
 wall_collision = NodePath("../../ray_collision/WallCollisionCheck")
-melee_collision = NodePath("../../MeleeCollision/CollisionShape2D")
+melee_collision = NodePath("../../ray_collision/MeleeCollision/CollisionShape2D")
+hurtbox_component_area = NodePath("../../HurtboxComponent/CollisionShape2D")
 melee_ray = NodePath("../../ray_collision/MeleeRay")
 melee_timer = NodePath("../../timers/MeleeTimer")
 melee_cooldown_timer = NodePath("../../timers/MeleeCooldownTimer")
@@ -81,7 +87,6 @@ melee_cooldown_timer = NodePath("../../timers/MeleeCooldownTimer")
 grapple_cooldown_timer = NodePath("../../timers/GrappleCooldownTimer")
 melee_cooldown_bar = NodePath("../../StaticHud/MeleeCooldown")
 grapple_cooldown_bar = NodePath("../../StaticHud/GrappleCooldown")
-jump_velocity = 500.0
 controller = NodePath("../..")
 
 [node name="PlayerGrapple" type="Node" parent="StateMachine" unique_id=2054666218 node_paths=PackedStringArray("move_component", "ray_component", "grapple_ray", "grapple_collision_check_area", "grapple_cooldown_timer", "melee_attack_line", "controller")]
@@ -98,6 +103,7 @@ controller = NodePath("../..")
 metadata/_custom_type_script = "uid://3wwld143mnwm"
 
 [node name="ray_collision" type="Node2D" parent="." unique_id=567367477]
+visible = false
 
 [node name="MeleeRay" type="RayCast2D" parent="ray_collision" unique_id=636177797]
 target_position = Vector2(300, 0)
@@ -111,11 +117,12 @@ target_position = Vector2(500, 0)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ray_collision/WallCollisionCheck" unique_id=1267760982]
 shape = SubResource("CapsuleShape2D_rgyib")
 
-[node name="MeleeCollision" type="Area2D" parent="." unique_id=34126781]
+[node name="MeleeCollision" type="Area2D" parent="ray_collision" unique_id=34126781]
 collision_layer = 0
 collision_mask = 4
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MeleeCollision" unique_id=1839111718]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ray_collision/MeleeCollision" unique_id=1839111718]
+position = Vector2(1, -2)
 shape = SubResource("CircleShape2D_2ieo8")
 disabled = true
 
@@ -126,6 +133,7 @@ one_shot = true
 ignore_time_scale = true
 
 [node name="MeleeCooldownTimer" type="Timer" parent="timers" unique_id=1189284988]
+wait_time = 0.5
 one_shot = true
 ignore_time_scale = true
 
@@ -213,6 +221,10 @@ zoom = Vector2(0.5, 0.5)
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=812038682]
 libraries/ = SubResource("AnimationLibrary_yllr7")
 
-[node name="test" type="Sprite2D" parent="." unique_id=1066851958]
-unique_name_in_owner = true
-texture = ExtResource("8_8t03j")
+[node name="HurtboxComponent" parent="." unique_id=627330934 instance=ExtResource("13_yllr7")]
+collision_layer = 2
+
+[node name="CollisionShape2D" parent="HurtboxComponent" index="0" unique_id=2088561250]
+shape = SubResource("CircleShape2D_yllr7")
+
+[editable path="HurtboxComponent"]

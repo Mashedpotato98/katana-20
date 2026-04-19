@@ -11,7 +11,7 @@ func is_collding(ray:RayCast2D, can_collide_with:Node2D) -> bool:
         if not ray.is_colliding():
                 return false
 
-        return ray.get_collider().is_class(can_collide_with.get_class())
+        return (not can_collide_with == null) and (ray.get_collider().is_class(can_collide_with.get_class()))
 
 func ray_look_at_target(ray:RayCast2D, target_pos:Vector2):
         ray.look_at(target_pos)
