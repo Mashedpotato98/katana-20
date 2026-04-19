@@ -1,4 +1,8 @@
 
+###### THE HITBOX, HURTBOX AND ATTACK THINGIES ARE ALL MESSED UP. DONT TRY TO FIX IT, REDO IT 
+##### THE MELEE WALL COLLISION THINGIE DOES SOME BAD STUFF, KEEP THAT IN MIND
+
+
 Coding: 
   player: 
     > (D, but its still  a bit of a mess. Need to connect and disconnect signals when enterting and exiting state)the mess of signals in the player state machine. Need to make it readable. Even the old system might've been
@@ -9,11 +13,17 @@ Coding:
 
     > (Looks good, might use it) Experiment with using a tween for the melee charge instead of physically moving the player using its velocity
 
-    > (Y, done. ROught) Stopping the player before hitting a wall during the charge attack. Or doing something else that does not reduce the fun when acidentally hitting walls during the melee attack
+    > (D, done. ROught) Stopping the player before hitting a wall during the charge attack. Or doing something else that does not reduce the fun when acidentally hitting walls during the melee attack
 
     > (D, but dont know about the side effects) Time slowing down during melee charge 
 
     > The melee ray indicator should not go trhough walls. Rather, it should stop before intersecting with a wall
+
+    > (D, very messy still)_ There are some problems with the player collision, particularly in the melee collision 
+
+    > (D, roughy) The player should be using a hurtbox and hitbox. Since, we need to disable stuff based on that. One hitbox and hurtbox for now, might changei nthe future
+
+    >Maybe, instead of changing movement by velocity, directly change position in melee 
 
   enemies: 
     > (D, a basic version has been done. Problem is the area for detecting whetehr the player is close and the hit-box is the same) The strong terry attack state. Terry will get close the player and attack
