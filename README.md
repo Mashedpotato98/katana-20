@@ -1,4 +1,4 @@
-# Relative Line Numbers
+# Relative Line Numbers -> NO WAY< THIS GUY POPPED UP. BTW< DOES NOT WORK
 Renders the script editor line numbers relative to the cursor.
 ![Alt text](./screenshots/screenshot.png)
 
