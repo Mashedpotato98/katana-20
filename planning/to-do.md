@@ -23,7 +23,7 @@ Coding:
 
     > (D, roughy) The player should be using a hurtbox and hitbox. Since, we need to disable stuff based on that. One hitbox and hurtbox for now, might changei nthe future
 
-    >Maybe, instead of changing movement by velocity, directly change position in melee 
+    >(D, Janky, for now. Feels nice) Maybe, instead of changing movement by velocity, directly change position in melee 
 
   enemies: 
     > (D, a basic version has been done. Problem is the area for detecting whetehr the player is close and the hit-box is the same) The strong terry attack state. Terry will get close the player and attack

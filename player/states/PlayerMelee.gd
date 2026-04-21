@@ -32,6 +32,7 @@ func Enter():
         melee_timer.start()
         #move_component.push(ray_component.direction_to_target, melee_force)
         tween_move()
+        #controller.global_position = melee_ray.to_global(melee_ray.target_position)
 
 func physics_update(_delta:float):
         #move_component.stop()
@@ -70,7 +71,10 @@ func tween_move():
         tween = create_tween()
         tween.set_trans(Tween.TRANS_QUAD)
         tween.set_ease(Tween.EASE_IN_OUT)
-        tween.tween_property(controller, "velocity", ray_component.direction_to_target * melee_force,melee_cooldown_timer.wait_time)
+        #POSITION CHANGE-> 
+        #tween.tween_property(controller, "global_position", melee_ray.to_global(melee_ray.target_position), 0.5)
+        #VELO CHANGE ->
+        tween.tween_property(controller,"velocity", ray_component.direction_to_target * melee_force, 0.1)
       ## YEAH YEAH< I KNOW. MGIC NUMBERS< ITS TEMPORRAORY. GOT IT ?
 
       

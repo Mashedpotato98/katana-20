@@ -13,6 +13,8 @@ class_name PlayerMeleeCharge extends state
 
 var max_charge_time:int = 30
 
+var colour:Color = Color(255,255,0)
+
 #region de/initial
 
 func _ready() -> void:
@@ -47,7 +49,7 @@ func physics_update(_delta:float):
 
 func charge_mechanics():
         ray_component.ray_look_at_target(melee_ray, controller.get_global_mouse_position())
-        if Input.is_action_just_released(&"melee"):
+        if Input.is_action_just_released(&"melee") and not ray_component.is_collding(melee_ray, null):
                 Transitioned.emit(self, &"playerMelee")
 
 #region melee_visuals
@@ -69,6 +71,7 @@ func update_hud():
         var pos:Vector2 = ray_component.direction_to_target * melee_ray.target_position.x
         melee_attack_line.set_point_position(0, melee_attack_line.to_local(controller.global_position))
         melee_attack_line.set_point_position(1, pos)
+        melee_attack_line.default_color = colour
         
         melee_charge_bar.value += 1
 

@@ -126,7 +126,8 @@ metadata/_custom_type_script = "uid://l2uto07qmssu"
 [node name="PlayerDetectRay" type="RayCast2D" parent="." unique_id=696409511]
 position = Vector2(1, 1)
 target_position = Vector2(400, 0)
-collision_mask = 3
+collision_mask = 2
+collide_with_areas = true
 
 [node name="ChaseComponent" type="Node" parent="." unique_id=603773561 node_paths=PackedStringArray("controller", "navigation_agent", "path_calc_timer")]
 script = ExtResource("6_ikt82")

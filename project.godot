@@ -25,7 +25,7 @@ project/assembly_name="katana-20"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/godot_vim/plugin.cfg")
+enabled=PackedStringArray("res://addons/godot-vim/plugin.cfg")
 
 [global_group]
 
@@ -84,6 +84,10 @@ melee={
 2d_physics/layer_2="Player"
 2d_physics/layer_3="Enemies"
 2d_physics/layer_4="Collectibles"
+
+[physics]
+
+3d/default_gravity=100000000000000.0
 
 [rendering]
 
