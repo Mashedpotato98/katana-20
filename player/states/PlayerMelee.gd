@@ -72,9 +72,9 @@ func tween_move():
         tween.set_trans(Tween.TRANS_QUAD)
         tween.set_ease(Tween.EASE_IN_OUT)
         #POSITION CHANGE-> 
-        #tween.tween_property(controller, "global_position", melee_ray.to_global(melee_ray.target_position), 0.5)
+        tween.tween_property(controller, "global_position", melee_ray.to_global(melee_ray.target_position), 0.5)
         #VELO CHANGE ->
-        tween.tween_property(controller,"velocity", ray_component.direction_to_target * melee_force, 0.1)
+        #tween.tween_property(controller,"velocity", ray_component.direction_to_target * melee_force, 0.01)
       ## YEAH YEAH< I KNOW. MGIC NUMBERS< ITS TEMPORRAORY. GOT IT ?
 
       
