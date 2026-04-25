@@ -25,6 +25,8 @@ Coding:
 
     >(D, Janky, for now. Feels nice) Maybe, instead of changing movement by velocity, directly change position in melee 
 
+    >(OOh, I think it maybe working) Maybe, the player has two melee attacks. One is the dash attack and the other is a regular melee attack 
+
   enemies: 
     > (D, a basic version has been done. Problem is the area for detecting whetehr the player is close and the hit-box is the same) The strong terry attack state. Terry will get close the player and attack
 

@@ -14,7 +14,11 @@ class_name PlayerWalk extends state
 const deceleration:int = 700
 const acceleration:int = 500
 
+var melee_threshold:float  = 0.1
+var holding_melee_for:float = 0.0
+
 func Enter() -> void:
+        print("nbigga")
         if !melee_cooldown_timer.timeout.is_connected(_on_melee_cooldown_timer_timeout):
                 melee_cooldown_timer.timeout.connect(_on_melee_cooldown_timer_timeout)
         if !grapple_cooldown_timer.timeout.is_connected(_on_grapple_cooldown_timer_timeout):
@@ -34,7 +38,7 @@ func physics_update(_delta:float):
                 #%CanMeleeLabel.text = "melee: " + str(can_melee)
 
                 movement(_delta)
-                melee_attack()
+                melee_attack(_delta)
                 grapple()
                 hud()
 
@@ -47,9 +51,16 @@ func movement(_delta:float):
         if Input.is_action_just_pressed("ui_up"):
                 movement_component.jump(_delta)
 
-func melee_attack():
+func melee_attack(_delta:float):
+
         if Input.is_action_pressed(&"melee") and can_melee():
-                Transitioned.emit(self, &"PlayerMeleeCharge")
+                holding_melee_for +=  _delta
+                print("hold : " + str(holding_melee_for), " walk.gd")
+                if holding_melee_for >= melee_threshold:
+                        Transitioned.emit(self, &"PlayerMeleeCharge")
+
+        elif Input.is_action_just_released("melee"):
+                Transitioned.emit(self, &"PlayerMelee_")
                 return
 
 func grapple():
@@ -69,15 +80,16 @@ func can_grapple() -> bool:
                 return false
         return true
 
-func can_melee():
+func can_melee() -> bool:
         if melee_cooldown_timer.time_left > 0:
-                return false
+                return true
         return true
 
 func Exit():
         #melee_cooldown_timer.timeout.disconnect(_on_melee_cooldown_timer_timeout)
         #grapple_cooldown_timer.timeout.disconnect(_on_melee_cooldown_timer_timeout)
         %CrossHair.visible = false
+        holding_melee_for = 0
 
 func _on_melee_cooldown_timer_timeout() -> void:
         pass

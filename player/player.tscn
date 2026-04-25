@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://byybmaoclufuf" path="res://player/states/PlayerMeleeCharge.gd" id="7_boad6"]
 [ext_resource type="Texture2D" uid="uid://bmc6y4py6ofuk" path="res://assets/under.png" id="8_8t03j"]
 [ext_resource type="Script" uid="uid://dytk7ldtxvwp3" path="res://components/entity_components/movement_component.gd" id="8_hg6s5"]
+[ext_resource type="Script" uid="uid://cu4slxomrs0qj" path="res://player/player_states/PlayerMelee_.gd" id="8_kb6p2"]
 [ext_resource type="Script" uid="uid://3wwld143mnwm" path="res://player/states/PlayerGrapple.gd" id="8_rgyib"]
 [ext_resource type="Texture2D" uid="uid://bri7cmfffj5bv" path="res://assets/New Piskel-2.png.png" id="9_8t03j"]
 [ext_resource type="Script" uid="uid://div1lsxq0smqe" path="res://components/entity_components/ray_component.gd" id="12_ebec5"]
@@ -24,12 +25,65 @@ height = 58.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_2ieo8"]
 radius = 54.33231
 
+[sub_resource type="Animation" id="Animation_kb6p2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ray_collision/MeleeHitbox/CollisionShape2D:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
 [sub_resource type="Animation" id="Animation_ebec5"]
 resource_name = "melee"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ray_collision/MeleeHitbox/CollisionShape2D:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.10004495, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.10004495, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.555, 1.555), Vector2(1, 1)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_yllr7"]
 _data = {
-&"melee": SubResource("Animation_ebec5")
+&"RESET": SubResource("Animation_kb6p2"),
+&"melee_quick": SubResource("Animation_ebec5")
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_yllr7"]
@@ -56,9 +110,9 @@ initial_state = NodePath("PlayerWalk")
 script = ExtResource("5_boad6")
 move_component = NodePath("../../components/MovementComponent")
 ray_component = NodePath("../../components/RayComponent")
-melee_area = NodePath("../../ray_collision/MeleeCollision")
+melee_area = NodePath("../../ray_collision/MeleeHitbox")
 wall_collision = NodePath("../../ray_collision/WallCollisionCheck")
-melee_collision = NodePath("../../ray_collision/MeleeCollision/CollisionShape2D")
+melee_collision = NodePath("../../ray_collision/MeleeHitbox/CollisionShape2D")
 hurtbox_component_area = NodePath("../../HurtboxComponent/CollisionShape2D")
 melee_ray = NodePath("../../ray_collision/MeleeRay")
 melee_timer = NodePath("../../timers/MeleeTimer")
@@ -102,6 +156,13 @@ grapple_ray_length = 500
 controller = NodePath("../..")
 metadata/_custom_type_script = "uid://3wwld143mnwm"
 
+[node name="PlayerMelee_" type="Node" parent="StateMachine" unique_id=409157435 node_paths=PackedStringArray("melee_hitbox", "animation_player", "controller")]
+script = ExtResource("8_kb6p2")
+melee_hitbox = NodePath("../../ray_collision/MeleeHitbox")
+animation_player = NodePath("../../AnimationPlayer")
+controller = NodePath("../..")
+metadata/_custom_type_script = "uid://cu4slxomrs0qj"
+
 [node name="ray_collision" type="Node2D" parent="." unique_id=567367477]
 
 [node name="MeleeRay" type="RayCast2D" parent="ray_collision" unique_id=636177797]
@@ -115,11 +176,11 @@ target_position = Vector2(500, 0)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ray_collision/WallCollisionCheck" unique_id=1267760982]
 shape = SubResource("CapsuleShape2D_rgyib")
 
-[node name="MeleeCollision" type="Area2D" parent="ray_collision" unique_id=34126781]
+[node name="MeleeHitbox" type="Area2D" parent="ray_collision" unique_id=34126781]
 collision_layer = 0
 collision_mask = 4
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ray_collision/MeleeCollision" unique_id=1839111718]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ray_collision/MeleeHitbox" unique_id=1839111718]
 position = Vector2(1, -2)
 shape = SubResource("CircleShape2D_2ieo8")
 disabled = true
@@ -219,6 +280,7 @@ zoom = Vector2(0.5, 0.5)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=812038682]
 libraries/ = SubResource("AnimationLibrary_yllr7")
+autoplay = &"melee_quick"
 
 [node name="HurtboxComponent" parent="." unique_id=627330934 instance=ExtResource("13_yllr7")]
 collision_layer = 2
