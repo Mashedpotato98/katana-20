@@ -50,7 +50,7 @@ func physics_update(_delta:float):
 func charge_mechanics():
         ray_component.ray_look_at_target(melee_ray, controller.get_global_mouse_position())
         if Input.is_action_just_released(&"melee"): #and not ray_component.is_collding(melee_ray, null):
-                Transitioned.emit(self, &"playerMelee")
+                Transitioned.emit(self, &"PlayerDashMelee")
 
 #region melee_visuals
 func enable_hud():

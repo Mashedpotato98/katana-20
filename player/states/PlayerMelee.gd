@@ -1,4 +1,4 @@
-class_name PlayerMelee extends state
+class_name PlayerDashMelee extends state
 
 @export var move_component:MovementComponent
 @export var ray_component:RayComponent 

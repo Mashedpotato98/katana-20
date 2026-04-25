@@ -58,9 +58,10 @@ func melee_attack(_delta:float):
                 print("hold : " + str(holding_melee_for), " walk.gd")
                 if holding_melee_for >= melee_threshold:
                         Transitioned.emit(self, &"PlayerMeleeCharge")
+                        return
 
-        elif Input.is_action_just_released("melee"):
-                Transitioned.emit(self, &"PlayerMelee_")
+        elif Input.is_action_just_released(&"melee"):
+                Transitioned.emit(self, &"PlayerQuickMelee")
                 return
 
 func grapple():

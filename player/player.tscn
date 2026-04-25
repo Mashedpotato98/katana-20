@@ -106,7 +106,7 @@ vframes = 4
 [node name="StateMachine" parent="." unique_id=1700750132 node_paths=PackedStringArray("initial_state") instance=ExtResource("4_g6k8r")]
 initial_state = NodePath("PlayerWalk")
 
-[node name="PlayerMelee" type="Node" parent="StateMachine" unique_id=730651810 node_paths=PackedStringArray("move_component", "ray_component", "melee_area", "wall_collision", "melee_collision", "hurtbox_component_area", "melee_ray", "melee_timer", "melee_cooldown_timer", "controller")]
+[node name="PlayerDashMelee" type="Node" parent="StateMachine" unique_id=730651810 node_paths=PackedStringArray("move_component", "ray_component", "melee_area", "wall_collision", "melee_collision", "hurtbox_component_area", "melee_ray", "melee_timer", "melee_cooldown_timer", "controller")]
 script = ExtResource("5_boad6")
 move_component = NodePath("../../components/MovementComponent")
 ray_component = NodePath("../../components/RayComponent")
@@ -156,7 +156,7 @@ grapple_ray_length = 500
 controller = NodePath("../..")
 metadata/_custom_type_script = "uid://3wwld143mnwm"
 
-[node name="PlayerMelee_" type="Node" parent="StateMachine" unique_id=409157435 node_paths=PackedStringArray("melee_hitbox", "animation_player", "controller")]
+[node name="PlayerQuickMelee" type="Node" parent="StateMachine" unique_id=409157435 node_paths=PackedStringArray("melee_hitbox", "animation_player", "controller")]
 script = ExtResource("8_kb6p2")
 melee_hitbox = NodePath("../../ray_collision/MeleeHitbox")
 animation_player = NodePath("../../AnimationPlayer")
