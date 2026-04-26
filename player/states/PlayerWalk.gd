@@ -18,7 +18,6 @@ var melee_threshold:float  = 0.1
 var holding_melee_for:float = 0.0
 
 func Enter() -> void:
-        print("nbigga")
         if !melee_cooldown_timer.timeout.is_connected(_on_melee_cooldown_timer_timeout):
                 melee_cooldown_timer.timeout.connect(_on_melee_cooldown_timer_timeout)
         if !grapple_cooldown_timer.timeout.is_connected(_on_grapple_cooldown_timer_timeout):
@@ -48,15 +47,15 @@ func movement(_delta:float):
         movement_component.movement_direction = Vector2(input_x, 0.0)
         movement_component.move(_delta)
         
-        if Input.is_action_just_pressed("ui_up"):
+        if Input.is_action_just_pressed(&"ui_up"):
                 movement_component.jump(_delta)
 
 func melee_attack(_delta:float):
 
         if Input.is_action_pressed(&"melee") and can_melee():
                 holding_melee_for +=  _delta
-                print("hold : " + str(holding_melee_for), " walk.gd")
-                if holding_melee_for >= melee_threshold:
+                #print("hold : " + str(holding_melee_for), " walk.gd")
+                if holding_melee_for >= melee_threshold and can_melee():
                         Transitioned.emit(self, &"PlayerMeleeCharge")
                         return
 
@@ -82,8 +81,8 @@ func can_grapple() -> bool:
         return true
 
 func can_melee() -> bool:
-        if melee_cooldown_timer.time_left > 0:
-                return true
+        if melee_cooldown_timer.time_left > 0.0:
+                return false
         return true
 
 func Exit():

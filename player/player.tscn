@@ -151,7 +151,7 @@ grapple_ray = NodePath("../../ray_collision/GrappleRay")
 grapple_collision_check_area = NodePath("../../ray_collision/WallCollisionCheck")
 grapple_cooldown_timer = NodePath("../../timers/GrappleCooldownTimer")
 melee_attack_line = NodePath("../../MeleeAttackLine")
-grapple_pull_force = 700
+grapple_pull_force = 400
 grapple_ray_length = 500
 controller = NodePath("../..")
 metadata/_custom_type_script = "uid://3wwld143mnwm"
@@ -192,7 +192,7 @@ one_shot = true
 ignore_time_scale = true
 
 [node name="MeleeCooldownTimer" type="Timer" parent="timers" unique_id=1189284988]
-wait_time = 0.5
+wait_time = 2.0
 one_shot = true
 ignore_time_scale = true
 

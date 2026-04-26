@@ -31,5 +31,6 @@ func jump(_delta:float):
 
 func push(dir:Vector2, force:float):
         #movement_direction = Vector2.ZERO
+        print("movcomp.gd, ", force)
         controller.velocity = dir * force
         #print("daw: " + str(dir * force), "vel:" + str(controller.velocity))

@@ -27,6 +27,8 @@ Coding:
 
     >(OOh, I think it maybe working) Maybe, the player has two melee attacks. One is the dash attack and the other is a regular melee attack 
 
+    > Maybe the player can move around a bit when grappling. A bit of horizontal motion
+
   enemies: 
     > (D, a basic version has been done. Problem is the area for detecting whetehr the player is close and the hit-box is the same) The strong terry attack state. Terry will get close the player and attack
 

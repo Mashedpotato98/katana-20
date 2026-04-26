@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://7lymrpbeqx73" path="res://assets/spritesheet.png" id="2_t814o"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t814o"]
-size = Vector2(20, 79)
+size = Vector2(6, 96)
 
 [node name="Laser" unique_id=2001351007 instance=ExtResource("1_fw1t6")]
 collision_mask = 2
