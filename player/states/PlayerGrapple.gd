@@ -9,7 +9,7 @@ class_name PlayerGrapple extends state
 
 @export var grapple_pull_force:int = 100
 @export var shimmy_speed:int = 15000
-@export var grapple_ray_length:int 
+@export var grapple_ray_lengthnotused:int 
 
 func Enter() -> void:
         move_component.max_speed = shimmy_speed

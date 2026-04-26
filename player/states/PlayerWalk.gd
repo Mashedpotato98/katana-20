@@ -65,7 +65,7 @@ func melee_attack(_delta:float):
 
 func grapple():
         ray_component.ray_look_at_target(grapple_ray, controller.get_global_mouse_position())
-        %CrossHair.global_position = grapple_ray.to_global(grapple_ray.target_position) #crosshair will be at end of ray
+        %CrossHair.global_position = grapple_ray.to_global(grapple_ray.target_position * Vector2(0.9, 0.9)) #crosshair will be at end of ray
         if Input.is_action_just_pressed(&"grapple") and can_grapple(): 
                 if grapple_ray.is_colliding():
                         Transitioned.emit(self, &"PlayerGrapple")

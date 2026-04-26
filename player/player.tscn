@@ -152,7 +152,6 @@ grapple_collision_check_area = NodePath("../../ray_collision/WallCollisionCheck"
 grapple_cooldown_timer = NodePath("../../timers/GrappleCooldownTimer")
 melee_attack_line = NodePath("../../MeleeAttackLine")
 grapple_pull_force = 400
-grapple_ray_length = 500
 controller = NodePath("../..")
 metadata/_custom_type_script = "uid://3wwld143mnwm"
 
@@ -169,7 +168,7 @@ metadata/_custom_type_script = "uid://cu4slxomrs0qj"
 target_position = Vector2(300, 0)
 
 [node name="GrappleRay" type="RayCast2D" parent="ray_collision" unique_id=1846430602]
-target_position = Vector2(500, 0)
+target_position = Vector2(550, 0)
 
 [node name="WallCollisionCheck" type="Area2D" parent="ray_collision" unique_id=629304948]
 

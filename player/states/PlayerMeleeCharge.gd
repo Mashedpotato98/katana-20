@@ -75,6 +75,8 @@ func update_hud():
         
         melee_charge_bar.value += 1
 
+func change_game_speed(time_scale:float):
+        Engine.set_deferred("time_scale", time_scale) 
 #endregion
 
 
@@ -91,7 +93,5 @@ func check_ray_colliders(): # I dont think this is in use
                         melee_ray.add_exception(collied_with)
                         melee_ray.force_raycast_update()
 
-func change_game_speed(time_scale:float):
-        Engine.time_scale = time_scale
 
 #endregion
