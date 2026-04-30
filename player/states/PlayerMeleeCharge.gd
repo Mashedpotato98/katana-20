@@ -5,6 +5,7 @@ class_name PlayerMeleeCharge extends state
 
 @export var melee_ray:RayCast2D
 @export var ray_component:RayComponent
+@export var crosshair:Sprite2D 
 
 @export var melee_attack_line:Line2D
 @export var melee_charge_bar:TextureProgressBar
@@ -68,9 +69,9 @@ func disable_melee_line():
         melee_charge_bar.visible = false
 
 func update_hud():
-        var pos:Vector2 = ray_component.direction_to_target * melee_ray.target_position.x
+        ray_component.is_collding(melee_ray, null)
         melee_attack_line.set_point_position(0, melee_attack_line.to_local(controller.global_position))
-        melee_attack_line.set_point_position(1, pos)
+        melee_attack_line.set_point_position(1, melee_attack_line.to_local(ray_component.colliding_at_point) * Vector2(0.95, 0.95)) #multiplied by 0.9 to make it not go inside the wall
         melee_attack_line.default_color = colour
         
         melee_charge_bar.value += 1

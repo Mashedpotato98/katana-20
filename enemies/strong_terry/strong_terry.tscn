@@ -98,13 +98,12 @@ speed = 50
 controller = NodePath("../..")
 metadata/_custom_type_script = "uid://tvbromcqoq5n"
 
-[node name="TerryChase" type="Node" parent="state_machine" unique_id=1037312256 node_paths=PackedStringArray("movement_component", "ray_component", "chase_component", "enemy", "hit_box", "controller")]
+[node name="TerryChase" type="Node" parent="state_machine" unique_id=1037312256 node_paths=PackedStringArray("movement_component", "hit_box", "move_component", "chase_component", "controller")]
 script = ExtResource("4_sur7q")
 movement_component = NodePath("../../MovementComponent")
-ray_component = NodePath("../../RayComponent")
-chase_component = NodePath("../../ChaseComponent")
-enemy = NodePath("../..")
 hit_box = NodePath("../../HitBox")
+move_component = NodePath("../../MovementComponent")
+chase_component = NodePath("../../ChaseComponent")
 controller = NodePath("../..")
 metadata/_custom_type_script = "uid://btac5a0q5dqqo"
 

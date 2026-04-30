@@ -15,7 +15,7 @@ Coding:
 
     > (D, done. ROught) Stopping the player before hitting a wall during the charge attack. Or doing something else that does not reduce the fun when acidentally hitting walls during the melee attack
 
-    > (D, but dont know about the side effects) Time slowing down during melee charge 
+    > (D, but dont know about the side effects) Time slowing down during melee charge -> Side effect: Sometimes when slowing time just before dying, the next run of the game is choppy
 
     > The melee ray indicator should not go trhough walls. Rather, it should stop before intersecting with a wall
 
@@ -25,12 +25,26 @@ Coding:
 
     >(D, Janky, for now. Feels nice) Maybe, instead of changing movement by velocity, directly change position in melee 
 
+    >Maybe the player should instantly change positions in dash melee
+
     >(OOh, I think it maybe working) Maybe, the player has two melee attacks. One is the dash attack and the other is a regular melee attack 
 
-    > Maybe the player can move around a bit when grappling. A bit of horizontal motion
+    > (D, but maybe no in this way) Maybe the player can move around a bit when grappling. A bit of horizontal motion
+
+    > (D) quick melee pushes the player in the direction of the mouse
+
+    >Right now, without a cooldown timer, the player can just float in the air using the quick melee. I am using a cooldown timer to stop it but I think its less satisfying ni this way.
+    Maybe after a certain number of quick melees done by the player, there's a secret cooldown
 
   enemies: 
     > (D, a basic version has been done. Problem is the area for detecting whetehr the player is close and the hit-box is the same) The strong terry attack state. Terry will get close the player and attack
+
+
+      > Sniper enemy:
+          >
+        
+  general :
+    > Improve the look at of ray component for a smoother and more realisitci look at, not lock on
 
 level:    
   > A proper level management thingie. I need to decide on how big a level should be, whether and how many mini-levels there should be in a level, how big each mini-level should be, etc
@@ -38,6 +52,15 @@ level:
 
   > A proper level 
 
-
 hud :
   > Need to make a proper hud with elegant code
+
+Planning and organizing :
+  > Need to organize my files 
+
+
+ART :
+  > Player Sprite
+  > Terry sprite
+  > Sniper Sprite
+  

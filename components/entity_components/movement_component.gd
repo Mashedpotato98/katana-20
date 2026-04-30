@@ -22,7 +22,8 @@ func move(_delta:float):
         else:
                 controller.velocity.x = move_toward(controller.velocity.x, 0.0, decceleration * _delta)
 
-func stop():# Not in use for now 
+##Stops body. Make sure accel,decel is not zero
+func stop():
         controller.velocity = controller.velocity.move_toward(Vector2.ZERO, decceleration)
 
 func jump(_delta:float):
@@ -31,6 +32,5 @@ func jump(_delta:float):
 
 func push(dir:Vector2, force:float):
         #movement_direction = Vector2.ZERO
-        print("movcomp.gd, ", force)
         controller.velocity = dir * force
         #print("daw: " + str(dir * force), "vel:" + str(controller.velocity))

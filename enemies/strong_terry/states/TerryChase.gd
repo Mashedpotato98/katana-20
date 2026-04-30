@@ -1,23 +1,9 @@
-class_name TerryChase extends state
+class_name TerryChase extends EnemyChase
 
 @export var movement_component:MovementComponent
-@export var ray_component:RayComponent
-@export var chase_component:ChaseComponent
-@export var enemy:CharacterBody2D
 @export var hit_box:Area2D
 
-@export var speed:int = 500
-@export var jump_force:int = 450
-@export var acceleration:int = 450
-@export var deacceleration:int = 300
-
-
 func Enter() -> void:
-        movement_component.max_speed = speed
-        movement_component.jump_force = jump_force
-        movement_component.acceleration = acceleration
-        movement_component.decceleration = deacceleration
-
         if !hit_box.body_entered.is_connected(_player_close):
                 #print("YO, terry_chase.gd")
                 hit_box.body_entered.connect(_player_close)
